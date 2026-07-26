@@ -27,6 +27,8 @@ dependencies:
   # Service locator + logger used by logger_extension (reads GetIt.I<Logger>).
   get_it: ^7.2.0
   logger: ^2.0.2+1
+  # Date formatting used by common/utils/date_utils.dart.
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:

@@ -15,6 +15,8 @@ import 'package:starter_core/constants/enums/app_options_enum.dart';
 /// UiRuntime.onRefreshRouter = () => GetIt.I<NavigationRoute>().refreshRouter();
 /// UiRuntime.onChangeLanguage = (context, locale) =>
 ///     LocalizationProvider().changeLanguage(locale, context);
+/// UiRuntime.fontFamilyForLocaleProvider = (locale) =>
+///     locale.languageCode == 'en' ? GoogleFonts.poppins().fontFamily : GoogleFonts.cairo().fontFamily;
 /// ```
 class UiRuntime {
   UiRuntime._();
@@ -26,6 +28,12 @@ class UiRuntime {
   /// Current app locale.
   static Locale Function() appLanguageProvider = () => const Locale('en');
   static Locale get appLanguage => appLanguageProvider();
+
+  /// The app's preferred font family for a given locale (e.g. a different
+  /// Google Font per language). Returns null to fall back to the current
+  /// `TextStyle`'s own font family.
+  static String? Function(Locale locale) fontFamilyForLocaleProvider =
+      (_) => null;
 
   /// Whether changing language should restart the app.
   static bool Function() changeLangRestartProvider = () => false;

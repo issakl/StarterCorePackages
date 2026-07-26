@@ -58,6 +58,10 @@ dependencies:
   # Misc
   url_launcher: ^6.3.2
   intl: ^0.20.2
+  # Orientation-aware breakpoints for common/responsive/.
+  responsive_builder: ^0.7.0
+  # Platform share sheet for UiUtils.share.
+  share_plus: ^7.2.1
   dio: ^5.3.3
   dartz: ^0.10.1
   get_it: ^7.2.0
