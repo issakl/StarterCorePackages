@@ -36,7 +36,7 @@ class _GuestErrorScreenWidgetState extends State<GuestErrorScreenWidget>
       callback: widget.callback,
       context: context,
       disableRetryButton: widget.disableRetryButton ?? true,
-      content: S.current.guetsMessage,
+      content: CoreS.current.guetsMessage,
       icon: Icons.refresh,
       imageUrl: AppConstants.ERROR_EMPTY,
       errorAnimation: ErrorAnimation(

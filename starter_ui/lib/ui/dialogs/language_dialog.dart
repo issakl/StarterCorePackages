@@ -53,7 +53,7 @@ class LanguageDialogState extends State<LanguageDialog> {
         ),
       ),
       title: Text(
-        S.current.changeLangMessage,
+        CoreS.current.changeLangMessage,
         style: Theme.of(context).textTheme.bodyLarge,
       ),
       content: Container(
@@ -102,7 +102,7 @@ class LanguageDialogState extends State<LanguageDialog> {
                       ),
                     ),
                     child: Text(
-                      S.current.cancel,
+                      CoreS.current.cancel,
                     ),
                     onPressed: () {
                       // Navigator.of(context).pop();
@@ -117,7 +117,7 @@ class LanguageDialogState extends State<LanguageDialog> {
                       ),
                     ),
                     child: Text(
-                      S.current.confirm,
+                      CoreS.current.confirm,
                       style: const TextStyle(color: Colors.white),
                     ),
                     onPressed: () async {

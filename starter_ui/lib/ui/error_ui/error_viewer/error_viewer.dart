@@ -52,18 +52,18 @@ class ErrorViewer {
   }) {
     if (errorViewerOptions is ErrVSnackBarOptions) {
       showErrorSnackBar(
-        message: S.current.cancelErrorMessage,
+        message: CoreS.current.cancelErrorMessage,
         errVSnackBarOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVToastOptions) {
       showErrorToast(
-        message: S.current.cancelErrorMessage,
+        message: CoreS.current.cancelErrorMessage,
         errVToastOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVDialogOptions) {
       showCustomErrorDialog(
         context: context,
-        message: S.current.cancelErrorMessage,
+        message: CoreS.current.cancelErrorMessage,
         callback: callback,
         errVDialogOptions: errorViewerOptions,
       );
@@ -79,18 +79,18 @@ class ErrorViewer {
   }) {
     if (errorViewerOptions is ErrVSnackBarOptions) {
       showErrorSnackBar(
-        message: S.current.accountNotVerifiedErrorMessage,
+        message: CoreS.current.accountNotVerifiedErrorMessage,
         errVSnackBarOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVToastOptions) {
       showErrorToast(
-        message: S.current.accountNotVerifiedErrorMessage,
+        message: CoreS.current.accountNotVerifiedErrorMessage,
         errVToastOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVDialogOptions) {
       showCustomErrorDialog(
         context: context,
-        message: S.current.accountNotVerifiedErrorMessage,
+        message: CoreS.current.accountNotVerifiedErrorMessage,
         callback: callback,
         errVDialogOptions: errorViewerOptions,
       );
@@ -106,18 +106,18 @@ class ErrorViewer {
   }) {
     if (errorViewerOptions is ErrVSnackBarOptions) {
       showErrorSnackBar(
-        message: S.current.internalServerErrorMessage,
+        message: CoreS.current.internalServerErrorMessage,
         errVSnackBarOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVToastOptions) {
       showErrorToast(
-        message: S.current.internalServerErrorMessage,
+        message: CoreS.current.internalServerErrorMessage,
         errVToastOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVDialogOptions) {
       showCustomErrorDialog(
         context: context,
-        message: S.current.internalServerErrorMessage,
+        message: CoreS.current.internalServerErrorMessage,
         callback: callback,
         errVDialogOptions: errorViewerOptions,
       );
@@ -133,18 +133,18 @@ class ErrorViewer {
   }) {
     if (errorViewerOptions is ErrVSnackBarOptions) {
       showErrorSnackBar(
-        message: S.current.generalErrorMessage,
+        message: CoreS.current.generalErrorMessage,
         errVSnackBarOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVToastOptions) {
       showErrorToast(
-        message: S.current.generalErrorMessage,
+        message: CoreS.current.generalErrorMessage,
         errVToastOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVDialogOptions) {
       showCustomErrorDialog(
         context: context,
-        message: S.current.generalErrorMessage,
+        message: CoreS.current.generalErrorMessage,
         callback: callback,
         errVDialogOptions: errorViewerOptions,
       );
@@ -160,18 +160,18 @@ class ErrorViewer {
   }) {
     if (errorViewerOptions is ErrVSnackBarOptions) {
       showErrorSnackBar(
-        message: S.current.connectionErrorMessage,
+        message: CoreS.current.connectionErrorMessage,
         errVSnackBarOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVToastOptions) {
       showErrorToast(
-        message: S.current.connectionErrorMessage,
+        message: CoreS.current.connectionErrorMessage,
         errVToastOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVDialogOptions) {
       showCustomErrorDialog(
         context: context,
-        message: S.current.connectionErrorMessage,
+        message: CoreS.current.connectionErrorMessage,
         callback: callback,
         errVDialogOptions: errorViewerOptions,
       );
@@ -215,18 +215,18 @@ class ErrorViewer {
   }) {
     if (errorViewerOptions is ErrVSnackBarOptions) {
       showErrorSnackBar(
-        message: S.current.generalErrorMessage,
+        message: CoreS.current.generalErrorMessage,
         errVSnackBarOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVToastOptions) {
       showErrorToast(
-        message: S.current.generalErrorMessage,
+        message: CoreS.current.generalErrorMessage,
         errVToastOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVDialogOptions) {
       showCustomErrorDialog(
         context: context,
-        message: S.current.generalErrorMessage,
+        message: CoreS.current.generalErrorMessage,
         callback: callback,
         errVDialogOptions: errorViewerOptions,
       );
@@ -242,18 +242,18 @@ class ErrorViewer {
   }) {
     if (errorViewerOptions is ErrVSnackBarOptions) {
       showErrorSnackBar(
-        message: S.current.unauthorized,
+        message: CoreS.current.unauthorized,
         errVSnackBarOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVToastOptions) {
       showErrorToast(
-        message: S.current.unauthorized,
+        message: CoreS.current.unauthorized,
         errVToastOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVDialogOptions) {
       showCustomErrorDialog(
         context: context,
-        message: S.current.unauthorized,
+        message: CoreS.current.unauthorized,
         callback: callback,
         errVDialogOptions: errorViewerOptions,
       );
@@ -272,18 +272,18 @@ class ErrorViewer {
   }) {
     if (errorViewerOptions is ErrVSnackBarOptions) {
       showErrorSnackBar(
-        message: message ?? S.current.badRequest,
+        message: message ?? CoreS.current.badRequest,
         errVSnackBarOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVToastOptions) {
       showErrorToast(
-        message: message ?? S.current.badRequest,
+        message: message ?? CoreS.current.badRequest,
         errVToastOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVDialogOptions) {
       showCustomErrorDialog(
         context: context,
-        message: message ?? S.current.badRequest,
+        message: message ?? CoreS.current.badRequest,
         callback: callback,
         errVDialogOptions: errorViewerOptions,
       );
@@ -299,18 +299,18 @@ class ErrorViewer {
   }) {
     if (errorViewerOptions is ErrVSnackBarOptions) {
       showErrorSnackBar(
-        message: S.current.forbidden,
+        message: CoreS.current.forbidden,
         errVSnackBarOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVToastOptions) {
       showErrorToast(
-        message: S.current.forbidden,
+        message: CoreS.current.forbidden,
         errVToastOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVDialogOptions) {
       showCustomErrorDialog(
         context: context,
-        message: S.current.forbidden,
+        message: CoreS.current.forbidden,
         callback: callback,
         errVDialogOptions: errorViewerOptions,
       );
@@ -329,18 +329,18 @@ class ErrorViewer {
   }) {
     if (errorViewerOptions is ErrVSnackBarOptions) {
       showErrorSnackBar(
-        message: S.current.notFound(url),
+        message: CoreS.current.notFound(url),
         errVSnackBarOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVToastOptions) {
       showErrorToast(
-        message: S.current.notFound(url),
+        message: CoreS.current.notFound(url),
         errVToastOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVDialogOptions) {
       showCustomErrorDialog(
         context: context,
-        message: S.current.notFound(url),
+        message: CoreS.current.notFound(url),
         callback: callback,
         errVDialogOptions: errorViewerOptions,
       );
@@ -356,18 +356,18 @@ class ErrorViewer {
   }) {
     if (errorViewerOptions is ErrVSnackBarOptions) {
       showErrorSnackBar(
-        message: S.current.conflictError,
+        message: CoreS.current.conflictError,
         errVSnackBarOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVToastOptions) {
       showErrorToast(
-        message: S.current.conflictError,
+        message: CoreS.current.conflictError,
         errVToastOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVDialogOptions) {
       showCustomErrorDialog(
         context: context,
-        message: S.current.conflictError,
+        message: CoreS.current.conflictError,
         callback: callback,
         errVDialogOptions: errorViewerOptions,
       );
@@ -383,18 +383,18 @@ class ErrorViewer {
   }) {
     if (errorViewerOptions is ErrVSnackBarOptions) {
       showErrorSnackBar(
-        message: S.current.connectionTimeOut,
+        message: CoreS.current.connectionTimeOut,
         errVSnackBarOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVToastOptions) {
       showErrorToast(
-        message: S.current.connectionTimeOut,
+        message: CoreS.current.connectionTimeOut,
         errVToastOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVDialogOptions) {
       showCustomErrorDialog(
         context: context,
-        message: S.current.connectionTimeOut,
+        message: CoreS.current.connectionTimeOut,
         callback: callback,
         errVDialogOptions: errorViewerOptions,
       );
@@ -410,18 +410,18 @@ class ErrorViewer {
   }) {
     if (errorViewerOptions is ErrVSnackBarOptions) {
       showErrorSnackBar(
-        message: S.current.unknownError,
+        message: CoreS.current.unknownError,
         errVSnackBarOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVToastOptions) {
       showErrorToast(
-        message: S.current.unknownError,
+        message: CoreS.current.unknownError,
         errVToastOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVDialogOptions) {
       showCustomErrorDialog(
         context: context,
-        message: S.current.unknownError,
+        message: CoreS.current.unknownError,
         callback: callback,
         errVDialogOptions: errorViewerOptions,
       );
@@ -446,7 +446,7 @@ class ErrorViewer {
 
       showCustomErrorDialog(
         context: context,
-        message: S.current.connectionErrorMessage,
+        message: CoreS.current.connectionErrorMessage,
         callback: callback,
         errVDialogOptions: errVDialogOptions ?? const ErrVDialogOptions(),
       );
@@ -462,12 +462,12 @@ class ErrorViewer {
       showGuestDialog();
     } else if (errorViewerOptions is ErrVToastOptions) {
       showErrorToast(
-        message: S.current.guetsMessage,
+        message: CoreS.current.guetsMessage,
         errVToastOptions: errorViewerOptions,
       );
     } else if (errorViewerOptions is ErrVSnackBarOptions) {
       showErrorSnackBar(
-        message: S.current.guetsMessage,
+        message: CoreS.current.guetsMessage,
         errVSnackBarOptions: errorViewerOptions,
       );
     }

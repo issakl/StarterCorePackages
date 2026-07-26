@@ -95,7 +95,7 @@ void showToastBasedErrorType(
     loginRequiredError: (_) {
       ErrorViewer.showCustomError(
         context,
-        S.current.loginErrorRequired,
+        CoreS.current.loginErrorRequired,
         errorViewerOptions: errVToastOptions,
       );
     },

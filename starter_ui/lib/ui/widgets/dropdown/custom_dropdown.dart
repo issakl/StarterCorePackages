@@ -309,7 +309,7 @@ class CustomDropdownState<T> extends State<CustomDropdown<T>> {
           _isLoading = false;
           _isError = true;
           _dropdownItems = null;
-          _error = S.current.failedRefresher;
+          _error = CoreS.current.failedRefresher;
         });
       },
     );

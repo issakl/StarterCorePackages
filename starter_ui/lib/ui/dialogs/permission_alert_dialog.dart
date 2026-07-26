@@ -38,7 +38,7 @@ class PermissionAlertDialog extends StatelessWidget {
           ),
           child: RichText(
             text: TextSpan(
-              text: S.current.accessDenied,
+              text: CoreS.current.accessDenied,
               style: TextStyle(
                 fontSize: dimens.permissionTitleFontSize.sp,
                 color: const Color(0xff222222),
@@ -62,20 +62,20 @@ class PermissionAlertDialog extends StatelessWidget {
                     children: [
                       TextSpan(
                         text: permissionName == null
-                            ? S.current.permissionRequiredTitle
-                            : S.current
+                            ? CoreS.current.permissionRequiredTitle
+                            : CoreS.current
                                 .specificPermissionRequired(permissionName!),
                       ),
                       const TextSpan(text: '\n'),
                       TextSpan(
                         text: permissionName == null
-                            ? S.current.permissionRequiredMessage
-                            : S.current.makeSureSpecificPermissionGranted(
+                            ? CoreS.current.permissionRequiredMessage
+                            : CoreS.current.makeSureSpecificPermissionGranted(
                                 permissionName!),
                       ),
                       const TextSpan(text: '\n'),
                       TextSpan(
-                          text: S.current.tryEnablingItFromYourPhoneSettings),
+                          text: CoreS.current.tryEnablingItFromYourPhoneSettings),
                     ],
                     style: TextStyle(
                       fontSize: dimens.permissionBodyFontSize.sp,
@@ -104,7 +104,7 @@ class PermissionAlertDialog extends StatelessWidget {
                           backgroundColor: Theme.of(context).colorScheme.primary,
                         ),
                         child: Text(
-                          S.current.closeApp,
+                          CoreS.current.closeApp,
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.secondary,
                             fontSize: dimens.permissionBodyFontSize.sp,
@@ -121,7 +121,7 @@ class PermissionAlertDialog extends StatelessWidget {
                           borderRadius: BorderRadius.circular(dimens.permissionButtonRadius.r),
                         ),
                         child: Text(
-                          S.current.openAppSettings,
+                          CoreS.current.openAppSettings,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: dimens.permissionBodyFontSize.sp,

@@ -39,7 +39,7 @@ class _NotFoundErrorScreenWidgetState extends State<NotFoundErrorScreenWidget>
       callback: widget.callback,
       context: context,
       disableRetryButton: widget.disableRetryButton ?? false,
-      content: S.current.notFound(widget.url),
+      content: CoreS.current.notFound(widget.url),
       icon: Icons.refresh,
       imageUrl: AppConstants.ERROR_EMPTY,
       errorAnimation: ErrorAnimation(

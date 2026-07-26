@@ -33,7 +33,7 @@ class _BadRequestErrorScreenWidgetState
       callback: null,
       context: context,
       disableRetryButton: false,
-      title: widget.message ?? S.current.badRequest,
+      title: widget.message ?? CoreS.current.badRequest,
       imageUrl: AppConstants.ERROR_INVALID,
       errorAnimation: ErrorAnimation(
         animUrl: AppConstants.ANIM_LOTTIE_ERROR,

@@ -32,7 +32,7 @@ class _DoubleTapBackExitAppState extends State<DoubleTapBackExitApp> {
   Future<bool> _isExit(BuildContext context) async {
     if (DateTime.now().difference(_lastTime) > widget.duration) {
       _lastTime = DateTime.now();
-      CustomToast.show(S.current.pressTwiceToExit);
+      CustomToast.show(CoreS.current.pressTwiceToExit);
       return Future.value(false);
     }
     // Toast.cancelToast();

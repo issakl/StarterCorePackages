@@ -95,7 +95,7 @@ void showDialogBasedErrorType(
     loginRequiredError: (_) {
       ErrorViewer.showCustomError(
         context,
-        S.current.loginErrorRequired,
+        CoreS.current.loginErrorRequired,
         errorViewerOptions: errVDialogOptions,
       );
     },

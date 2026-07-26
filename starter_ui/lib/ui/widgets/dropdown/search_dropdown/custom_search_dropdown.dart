@@ -220,7 +220,7 @@ class _CustomSearchDropdownState<T> extends State<CustomSearchDropdown<T>> {
                     : widget.icon,
             hint: _isError
                 ? Text(
-                    S.current.errorOccurred,
+                    CoreS.current.errorOccurred,
                     style: TextStyle(color: Colors.red, fontSize: 38.sp),
                   )
                 : widget.hint,

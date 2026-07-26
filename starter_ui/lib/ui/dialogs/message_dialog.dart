@@ -71,8 +71,8 @@ showIconMessageDialog(BuildContext context,
                         ElevatedButton(
                           child: Text(
                             errorWidget == null
-                                ? S.current.confirm
-                                : S.current.ok,
+                                ? CoreS.current.confirm
+                                : CoreS.current.ok,
                           ),
                           onPressed: onConfirmPressed ??
                               () {
@@ -153,7 +153,7 @@ showImageMessageDialog(
                       children: [
                         ElevatedButton(
                           child: Text(
-                            buttonText ?? S.current.confirm,
+                            buttonText ?? CoreS.current.confirm,
                             style: const TextStyle(
                               color: Colors.white,
                             ),
@@ -208,7 +208,7 @@ class MessageDialogState extends State<MessageDialog> {
               color: Theme.of(context).primaryColor,
             ),
           ),
-          child: Text(S.current.ok),
+          child: Text(CoreS.current.ok),
           onPressed: () {
             widget.onOkPressed(context);
           },

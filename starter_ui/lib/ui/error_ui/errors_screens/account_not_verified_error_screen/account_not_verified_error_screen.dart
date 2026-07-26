@@ -36,7 +36,7 @@ class _AccountNotVerifiedErrorScreenState
       callback: widget.callback,
       context: context,
       disableRetryButton: widget.disableRetryButton ?? false,
-      content: S.current.accountNotVerifiedErrorMessage,
+      content: CoreS.current.accountNotVerifiedErrorMessage,
       icon: Icons.refresh,
       imageUrl: AppConstants.ERROR_INVALID,
       errorAnimation: ErrorAnimation(

@@ -55,7 +55,7 @@ class MapCubit extends Cubit<MapState> {
             error: CustomError(
               message: result.data?.rows[0].elements[0].status ??
                   // Todo Add translation
-                  S.current.errorFetchDistance,
+                  CoreS.current.errorFetchDistance,
             ),
             callback: () {
               this.getDistance(

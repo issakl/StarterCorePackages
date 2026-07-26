@@ -20,8 +20,8 @@ class EmptyScreenWidget extends StatelessWidget {
       context: context,
       callback: onButtonPressed,
       imageUrl: AppConstants.ERROR_EMPTY,
-      title: this.title ?? S.current.emptyScreen,
-      buttonContent: this.buttonText ?? S.current.retry,
+      title: this.title ?? CoreS.current.emptyScreen,
+      buttonContent: this.buttonText ?? CoreS.current.retry,
     );
   }
 }

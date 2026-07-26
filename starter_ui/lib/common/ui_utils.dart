@@ -22,10 +22,10 @@ class UiUtils {
           mode: mode ?? platformLaunchMode,
         );
       } catch (e) {
-        showToast(S.current.errorOccurred);
+        showToast(CoreS.current.errorOccurred);
       }
     } else {
-      showToast(S.current.errorOccurred);
+      showToast(CoreS.current.errorOccurred);
     }
   }
 }

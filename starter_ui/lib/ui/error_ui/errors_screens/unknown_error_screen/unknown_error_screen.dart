@@ -33,7 +33,7 @@ class _UnknownErrorScreenState extends State<UnknownErrorScreen>
       callback: widget.callback,
       context: context,
       disableRetryButton: widget.disableRetryButton ?? false,
-      content: S.current.unknownError,
+      content: CoreS.current.unknownError,
       icon: Icons.refresh,
       imageUrl: AppConstants.ERROR_UNKNOWING,
       errorAnimation: ErrorAnimation(

@@ -33,7 +33,7 @@ class _SocketErrorScreentState extends State<SocketErrorScreen>
   @override
   Widget build(BuildContext context) {
     return buildErrorScreen(
-      title: S.current.connectionErrorMessage,
+      title: CoreS.current.connectionErrorMessage,
       context: context,
       callback: widget.callback,
       disableRetryButton: widget.disableRetryButton ?? false,

@@ -119,7 +119,7 @@ Widget buildErrorScreen({
                           )
                         : const SizedBox(),
                     Text(
-                      buttonContent ?? S.current.retry,
+                      buttonContent ?? CoreS.current.retry,
                       style: TextStyle(
                         fontSize: ScreenUtil().setSp(dimens.errorButtonFontSize),
                         color: Colors.white,

@@ -37,7 +37,7 @@ class _LoginRequiredErrorScreenState extends State<LoginRequiredErrorScreen>
       callback: widget.callback,
       context: context,
       disableRetryButton: widget.disableRetryButton ?? false,
-      content: S.current.loginErrorRequired,
+      content: CoreS.current.loginErrorRequired,
       icon: Icons.refresh,
       imageUrl: AppConstants.ANIM_LOTTIE_ERROR_403_401,
       errorAnimation: ErrorAnimation(

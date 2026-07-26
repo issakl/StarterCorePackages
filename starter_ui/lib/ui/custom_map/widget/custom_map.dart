@@ -531,7 +531,7 @@ class CustomMapState extends State<CustomMap> {
       ErrorViewer.showError(
         context: context,
         error: CustomError(
-          message: S.current.connectionErrorMessage,
+          message: CoreS.current.connectionErrorMessage,
         ),
         callback: () => setMyLocationPolylines(
           // currentLocation,
@@ -545,7 +545,7 @@ class CustomMapState extends State<CustomMap> {
       ErrorViewer.showError(
         context: context,
         error: CustomError(
-          message: S.current.mapPathError,
+          message: CoreS.current.mapPathError,
         ),
         callback: () => setMyLocationPolylines(
             // currentLocation,

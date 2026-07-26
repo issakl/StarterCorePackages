@@ -15,21 +15,21 @@ void showCustomErrorDialog({
     showCustomMessageDialog(
       context: context,
       content: message ?? "",
-      title: errVDialogOptions.title ?? S.current.oopsErrorMessage,
+      title: errVDialogOptions.title ?? CoreS.current.oopsErrorMessage,
       onButtonPressed: errVDialogOptions.confirmOptions?.onBtnPressed ??
           (a) {
             Navigator.pop(context);
             if (callback != null) callback();
           },
       buttonText:
-          errVDialogOptions.confirmOptions?.buttonText ?? S.current.retry,
+          errVDialogOptions.confirmOptions?.buttonText ?? CoreS.current.retry,
     );
   }
   if (Platform.isAndroid) {
     showCustomConfirmCancelDialog(
       mainContext: context,
       content: message ?? "",
-      title: errVDialogOptions.title ?? S.current.oopsErrorMessage,
+      title: errVDialogOptions.title ?? CoreS.current.oopsErrorMessage,
       onConfirm: errVDialogOptions.confirmOptions?.onBtnPressed ??
           (dContext) {
             Navigator.pop(dContext);
@@ -39,9 +39,9 @@ void showCustomErrorDialog({
       onCancel: errVDialogOptions.cancelOptions?.onBtnPressed ??
           (dContext) async => Navigator.pop(dContext),
       confirmText:
-          errVDialogOptions.confirmOptions?.buttonText ?? S.current.retry,
+          errVDialogOptions.confirmOptions?.buttonText ?? CoreS.current.retry,
       cancelText:
-          errVDialogOptions.cancelOptions?.buttonText ?? S.current.cancel,
+          errVDialogOptions.cancelOptions?.buttonText ?? CoreS.current.cancel,
       isDismissible: false,
     );
   }

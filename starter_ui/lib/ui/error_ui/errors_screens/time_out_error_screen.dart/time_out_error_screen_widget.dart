@@ -35,7 +35,7 @@ class _TimeOutErrorScreenWidgetState extends State<TimeOutErrorScreenWidget>
       context: context,
       callback: widget.callback,
       disableRetryButton: widget.disableRetryButton ?? false,
-      content: S.current.connectionTimeOut,
+      content: CoreS.current.connectionTimeOut,
       icon: Icons.refresh,
       imageUrl: AppConstants.ERROR_TIMEOUT,
       errorAnimation: ErrorAnimation(

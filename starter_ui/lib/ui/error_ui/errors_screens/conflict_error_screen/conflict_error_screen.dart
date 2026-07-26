@@ -33,7 +33,7 @@ class _ConflictErrorScreenState extends State<ConflictErrorScreen>
       callback: widget.callback,
       context: context,
       disableRetryButton: widget.disableRetryButton ?? false,
-      content: S.current.conflictError,
+      content: CoreS.current.conflictError,
       icon: Icons.refresh,
       imageUrl: AppConstants.ERROR_INVALID,
       errorAnimation: ErrorAnimation(

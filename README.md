@@ -5,7 +5,9 @@ monorepo so they can be versioned and consumed independently:
 
 - `starter_core` — foundational entities, results, errors, enums
 - `starter_infra` — networking + local storage
-- `starter_localization` — generated `S` strings
+- `starter_localization` — generated `CoreS` strings (shared/baseline).
+  Each consuming app adds its own local `S` for app-specific strings and
+  registers both delegates — see that package's doc comment.
 - `starter_ui` — shared widgets, theme, navigation
 
 Developed together via a Dart pub workspace (`pubspec.yaml` / `melos.yaml`
@@ -24,17 +26,32 @@ dependencies:
     git:
       url: <this-repo's-url>
       path: starter_core
-      ref: main   # pin to a tag or commit once this stabilizes
+      ref: <commit-sha>
   starter_ui:
     git:
       url: <this-repo's-url>
       path: starter_ui
-      ref: main
+      ref: <commit-sha>
 ```
 
-`ref: main` floats with the branch — fine for active development, but once
-this settles down, pin `ref` to a tag or commit SHA so consumers don't get
-surprised by upstream changes.
+**`ref` must be the same exact commit SHA across every package you import
+from this repo — not a branch name like `main`.** `starter_ui` internally
+depends on the other three via `path: ../starter_core` etc.; when pub
+resolves `starter_ui` from git it pins that internal reference to a
+resolved commit, while a sibling direct dependency declared with `ref: main`
+stays an unresolved branch name. Pub treats those as two different sources
+for the same package and fails with something like:
+
+```
+Because every version of starter_ui from git depends on starter_localization
+from git ... at <sha> ... and starter_application depends on
+starter_localization from git ... at main ..., version solving failed.
+```
+
+Pinning every one of this repo's packages to the identical commit SHA
+(`git rev-parse HEAD` in this repo) avoids the conflict and is also just
+better practice — bump that SHA deliberately when you want to pull in
+upstream changes, rather than floating on a branch.
 
 ## Authenticating against a private remote
 

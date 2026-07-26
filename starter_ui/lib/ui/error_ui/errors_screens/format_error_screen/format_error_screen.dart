@@ -36,7 +36,7 @@ class _FormatErrorScreenState extends State<FormatErrorScreen>
       callback: widget.callback,
       context: context,
       disableRetryButton: widget.disableRetryButton ?? false,
-      content: S.current.generalErrorMessage,
+      content: CoreS.current.generalErrorMessage,
       icon: Icons.refresh,
       imageUrl: AppConstants.ANIM_LOTTIE_ERROR_INVALID,
       errorAnimation: ErrorAnimation(

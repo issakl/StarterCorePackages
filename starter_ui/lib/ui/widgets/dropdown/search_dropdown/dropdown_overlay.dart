@@ -108,7 +108,7 @@ class _DropdownOverlayState<T> extends State<_DropdownOverlay<T>> {
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 12.0),
               child: Text(
-                S.current.noResultFound,
+                CoreS.current.noResultFound,
                 style: Theme.of(context).textTheme.titleMedium,
               ),
             ),
@@ -365,7 +365,7 @@ class _SearchFieldState<T> extends State<_SearchField<T>> {
           constraints: const BoxConstraints.tightFor(height: 40),
           contentPadding: EdgeInsets.zero,
           // hintText: 'Search',
-          hintText: S.current.search,
+          hintText: CoreS.current.search,
           hintStyle: widget.searchStyle ??
               TextStyle(color: Colors.grey, fontSize: 40.sp),
 

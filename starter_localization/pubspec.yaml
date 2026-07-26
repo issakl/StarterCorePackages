@@ -1,10 +1,11 @@
 name: starter_localization
 description: >-
-  Baseline localization for the starter: the generated intl messages (`S`) and
-  their ARB sources. Shared by the UI package, features and apps. Each app may
-  add its own LocalizationsDelegate for app-specific strings on top of this.
+  Baseline localization for the starter: the generated intl messages
+  (`CoreS`) and their ARB sources. Shared by the UI package, features and
+  apps. Each app adds its own local `S` (via its own `flutter_intl` config)
+  for app-specific strings on top of this — see this package's README.
 publish_to: "none"
-version: 0.1.0
+version: 0.2.0
 
 environment:
   sdk: ">=3.6.0 <4.0.0"
@@ -18,12 +19,16 @@ dependencies:
     sdk: flutter
   intl: ^0.20.2
 
+dev_dependencies:
+  intl_utils: ^2.8.7
+
 flutter:
   uses-material-design: true
 
-# Regenerate with the intl_utils tool (flutter_intl) from this package.
+# Regenerate with `dart run intl_utils:generate` from this package
+# (or the Flutter Intl IDE plugin) after editing the ARB files below.
 flutter_intl:
   enabled: true
-  class_name: S
+  class_name: CoreS
   arb_dir: lib/l10n
   output_dir: lib

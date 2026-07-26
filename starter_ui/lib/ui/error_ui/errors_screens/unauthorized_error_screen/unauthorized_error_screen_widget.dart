@@ -29,7 +29,7 @@ class _UnauthorizedErrorScreenWidgetState
       callback: null,
       context: context,
       disableRetryButton: false,
-      title: S.current.unauthorized,
+      title: CoreS.current.unauthorized,
       imageUrl: AppConstants.ERROR_403_401,
       errorAnimation: ErrorAnimation(
         animUrl: AppConstants.ANIM_LOTTIE_ERROR_403_401,

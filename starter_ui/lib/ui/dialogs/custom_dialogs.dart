@@ -239,7 +239,7 @@ void showCustomConfirmCancelDialog({
                         padding: const EdgeInsets.symmetric(
                             horizontal: 12, vertical: 4),
                         child: Text(
-                          cancelText ?? S.current.cancel,
+                          cancelText ?? CoreS.current.cancel,
                           style: TextStyle(
                             fontSize: ScreenUtil().setSp(dimens.dialogFontSM),
                             color: Theme.of(context).primaryColor,
@@ -266,7 +266,7 @@ void showCustomConfirmCancelDialog({
                         padding: const EdgeInsets.symmetric(
                             horizontal: 12, vertical: 4),
                         child: Text(
-                          confirmText ?? S.current.confirm,
+                          confirmText ?? CoreS.current.confirm,
                           style: TextStyle(
                             fontSize: ScreenUtil().setSp(dimens.dialogFontSM),
                             color: Colors.white,
@@ -367,7 +367,7 @@ showCustomDialogWithTextField(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 12, vertical: 4),
                             child: Text(
-                              S.current.cancel,
+                              CoreS.current.cancel,
                               style: TextStyle(
                                 fontSize: ScreenUtil().setSp(dimens.dialogFontXL),
                                 color: Theme.of(context).primaryColor,
@@ -392,7 +392,7 @@ showCustomDialogWithTextField(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 12, vertical: 4),
                             child: Text(
-                              S.current.confirm,
+                              CoreS.current.confirm,
                               style: TextStyle(
                                 fontSize: ScreenUtil().setSp(dimens.dialogFontXL),
                                 color: Colors.white,

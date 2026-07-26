@@ -7,8 +7,8 @@ class FooterWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClassicFooter(
       loadingText: "",
-      noDataText: S.current.noDataRefresher,
-      failedText: S.current.failedRefresher,
+      noDataText: CoreS.current.noDataRefresher,
+      failedText: CoreS.current.failedRefresher,
       idleText: "",
       canLoadingText: "",
     );

@@ -37,7 +37,7 @@ class _InternalServerErrorScreenWidgetState
       context: context,
       callback: widget.callback,
       disableRetryButton: widget.disableRetryButton ?? false,
-      content: S.current.internalServerErrorMessage,
+      content: CoreS.current.internalServerErrorMessage,
       icon: Icons.refresh,
       imageUrl: AppConstants.ERROR_SERVER,
       errorAnimation: ErrorAnimation(

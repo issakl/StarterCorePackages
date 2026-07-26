@@ -73,7 +73,7 @@ class _EmptyErrorScreenWidgetState extends State<EmptyErrorScreenWidget>
               ),
               onPressed: widget.callback,
               child: Text(
-                widget.buttonText ?? S.current.refresh,
+                widget.buttonText ?? CoreS.current.refresh,
                 style: const TextStyle(fontSize: 14, color: Colors.white),
               ),
             ),

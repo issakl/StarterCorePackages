@@ -33,7 +33,7 @@ class _CancelErrorScreenState extends State<CancelErrorScreen>
       callback: widget.callback,
       context: context,
       disableRetryButton: widget.disableRetryButton ?? false,
-      content: S.current.cancelErrorMessage,
+      content: CoreS.current.cancelErrorMessage,
       icon: Icons.refresh,
       imageUrl: AppConstants.ERROR_INVALID,
       errorAnimation: ErrorAnimation(

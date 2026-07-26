@@ -166,56 +166,56 @@ String? _getTranslatedPermissionName(Permission permission) {
   if (permission == Permission.location ||
       permission == Permission.locationAlways ||
       permission == Permission.locationWhenInUse)
-    return S.current.locationPermission;
+    return CoreS.current.locationPermission;
   else if (permission == Permission.camera)
-    return S.current.cameraPermission;
+    return CoreS.current.cameraPermission;
   // TODO: translate other permissions
   // else if (permission == Permission.microphone)
-  //   return S.current.microphonePermission;
+  //   return CoreS.current.microphonePermission;
   // else if (permission == Permission.photos)
-  //   return S.current.photosPermission;
+  //   return CoreS.current.photosPermission;
   // else if (permission == Permission.photosAddOnly)
-  //   return S.current.photosAddOnlyPermission;
+  //   return CoreS.current.photosAddOnlyPermission;
   // else if (permission == Permission.contacts)
-  //   return S.current.contactsPermission;
+  //   return CoreS.current.contactsPermission;
   // else if (permission == Permission.reminders)
-  //   return S.current.remindersPermission;
+  //   return CoreS.current.remindersPermission;
   // else if (permission == Permission.sensors)
-  //   return S.current.sensorsPermission;
+  //   return CoreS.current.sensorsPermission;
   // else if (permission == Permission.sms)
-  //   return S.current.smsPermission;
+  //   return CoreS.current.smsPermission;
   // else if (permission == Permission.speech)
-  //   return S.current.speechPermission;
+  //   return CoreS.current.speechPermission;
   // else if (permission == Permission.storage)
-  //   return S.current.storagePermission;
+  //   return CoreS.current.storagePermission;
   // else if (permission == Permission.ignoreBatteryOptimizations)
-  //   return S.current.ignoreBatteryOptimizationsPermission;
+  //   return CoreS.current.ignoreBatteryOptimizationsPermission;
   // else if (permission == Permission.notification)
-  //   return S.current.notificationPermission;
+  //   return CoreS.current.notificationPermission;
   // else if (permission == Permission.accessMediaLocation)
-  //   return S.current.accessMediaLocationPermission;
+  //   return CoreS.current.accessMediaLocationPermission;
   // else if (permission == Permission.activityRecognition)
-  //   return S.current.activityRecognitionPermission;
+  //   return CoreS.current.activityRecognitionPermission;
   // else if (permission == Permission.bluetooth)
-  //   return S.current.bluetoothPermission;
+  //   return CoreS.current.bluetoothPermission;
   // else if (permission == Permission.manageExternalStorage)
-  //   return S.current.manageExternalStoragePermission;
+  //   return CoreS.current.manageExternalStoragePermission;
   // else if (permission == Permission.systemAlertWindow)
-  //   return S.current.systemAlertWindowPermission;
+  //   return CoreS.current.systemAlertWindowPermission;
   // else if (permission == Permission.requestInstallPackages)
-  //   return S.current.requestInstallPackagesPermission;
+  //   return CoreS.current.requestInstallPackagesPermission;
   // else if (permission == Permission.appTrackingTransparency)
-  //   return S.current.appTrackingTransparencyPermission;
+  //   return CoreS.current.appTrackingTransparencyPermission;
   // else if (permission == Permission.criticalAlerts)
-  //   return S.current.criticalAlertsPermission;
+  //   return CoreS.current.criticalAlertsPermission;
   // else if (permission == Permission.accessNotificationPolicy)
-  //   return S.current.accessNotificationPolicyPermission;
+  //   return CoreS.current.accessNotificationPolicyPermission;
   // else if (permission == Permission.bluetoothScan)
-  //   return S.current.bluetoothScanPermission;
+  //   return CoreS.current.bluetoothScanPermission;
   // else if (permission == Permission.bluetoothAdvertise)
-  //   return S.current.bluetoothAdvertisePermission;
+  //   return CoreS.current.bluetoothAdvertisePermission;
   // else if (permission == Permission.bluetoothConnect)
-  //   return S.current.bluetoothConnectPermission;
+  //   return CoreS.current.bluetoothConnectPermission;
   else
     return null;
 }

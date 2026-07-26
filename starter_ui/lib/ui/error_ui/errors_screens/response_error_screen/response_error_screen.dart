@@ -33,7 +33,7 @@ class _ResponseErrorScreenState extends State<ResponseErrorScreen>
       callback: widget.callback,
       context: context,
       disableRetryButton: widget.disableRetryButton ?? false,
-      content: S.current.responseError,
+      content: CoreS.current.responseError,
       icon: Icons.refresh,
       imageUrl: AppConstants.ERROR_INVALID,
       errorAnimation: ErrorAnimation(

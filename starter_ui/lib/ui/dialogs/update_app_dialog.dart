@@ -38,8 +38,8 @@ class _UpdateAppDialog extends StatelessWidget {
           children: [
             Text(
               forceUpdate
-                  ? S.current.dialogUpdateTitle
-                  : S.current.optionalUpdateTitle,
+                  ? CoreS.current.dialogUpdateTitle
+                  : CoreS.current.optionalUpdateTitle,
               style: const TextStyle(
                 fontSize: 16.0,
                 color: Colors.black,
@@ -49,8 +49,8 @@ class _UpdateAppDialog extends StatelessWidget {
             const SizedBox(height: 20),
             Text(
               forceUpdate
-                  ? S.current.dialogUpdateMessage
-                  : S.current.optionalUpdateMessage,
+                  ? CoreS.current.dialogUpdateMessage
+                  : CoreS.current.optionalUpdateMessage,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20),
@@ -65,7 +65,7 @@ class _UpdateAppDialog extends StatelessWidget {
                         primary: AppColors.primaryColorLight,
                         backgroundColor: Colors.transparent,
                         child: Text(
-                          S.current.ignoreForNow,
+                          CoreS.current.ignoreForNow,
                           textAlign: TextAlign.center,
                         ),
                         onPressed: () {
@@ -79,7 +79,7 @@ class _UpdateAppDialog extends StatelessWidget {
                       fixedSize: const Size(0, 45),
                       backgroundColor: Colors.grey,
                       child: Text(
-                        S.current.update.toUpperCase(),
+                        CoreS.current.update.toUpperCase(),
                       ),
                       onPressed: () {
                         UiUtils.launchURL(Uri.parse(storeLink));

@@ -38,7 +38,7 @@ class _ConnectionErrorScreenWidgetState
       context: context,
       callback: widget.callback,
       disableRetryButton: widget.disableRetryButton ?? false,
-      content: S.current.connectionErrorMessage,
+      content: CoreS.current.connectionErrorMessage,
       icon: Icons.refresh,
       imageUrl: AppConstants.ERROR_INVALID,
       errorAnimation: ErrorAnimation(

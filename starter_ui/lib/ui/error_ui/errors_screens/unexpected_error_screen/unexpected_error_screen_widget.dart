@@ -36,7 +36,7 @@ class _UnexpectedErrorScreenWidgetState
       callback: widget.callback,
       context: context,
       disableRetryButton: widget.disableRetryButton ?? false,
-      title: S.current.generalErrorMessage,
+      title: CoreS.current.generalErrorMessage,
       imageUrl: AppConstants.ERROR_INVALID,
       errorAnimation: ErrorAnimation(
         animUrl: AppConstants.ANIM_LOTTIE_ERROR,

@@ -65,7 +65,7 @@ class _OTPWidgetState extends State<OTPWidget> {
 
   Text _buildVerificationText() {
     return Text(
-      S.current.otpVerification,
+      CoreS.current.otpVerification,
       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 55.sp),
     );
   }
@@ -76,7 +76,7 @@ class _OTPWidgetState extends State<OTPWidget> {
 
   Text _buildDidnotRecieveCodeText() {
     return Text(
-      S.current.didnotReceiveAnyCode,
+      CoreS.current.didnotReceiveAnyCode,
       style: TextStyle(fontSize: 40.sp, color: Colors.grey.shade500),
     );
   }
@@ -84,7 +84,7 @@ class _OTPWidgetState extends State<OTPWidget> {
   Text _buildResendCodeText() {
     return Text.rich(
       TextSpan(
-        text: S.current.resendCode,
+        text: CoreS.current.resendCode,
         recognizer: TapGestureRecognizer()..onTap = widget.onResendCodeTap,
       ),
       style: TextStyle(
@@ -145,7 +145,7 @@ class _OTPWidgetState extends State<OTPWidget> {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: Text(
-            S.current.confirm.toUpperCase(),
+            CoreS.current.confirm.toUpperCase(),
             style: const TextStyle(
               color: Colors.white,
               letterSpacing: 1.5,

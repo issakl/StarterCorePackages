@@ -32,7 +32,7 @@ class _ForbiddenErrorScreenWidgetState extends State<ForbiddenErrorScreenWidget>
       callback: null,
       context: context,
       disableRetryButton: false,
-      title: S.current.forbidden,
+      title: CoreS.current.forbidden,
       imageUrl: AppConstants.ERROR_403_401,
       errorAnimation: ErrorAnimation(
         animUrl: AppConstants.ANIM_LOTTIE_ERROR_403_401,
