@@ -1,0 +1,4 @@
+analyzer:
+  errors:
+    # Keep generated freezed files from failing analysis.
+    invalid_annotation_target: ignore

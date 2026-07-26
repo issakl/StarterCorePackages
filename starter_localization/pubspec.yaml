@@ -1,0 +1,29 @@
+name: starter_localization
+description: >-
+  Baseline localization for the starter: the generated intl messages (`S`) and
+  their ARB sources. Shared by the UI package, features and apps. Each app may
+  add its own LocalizationsDelegate for app-specific strings on top of this.
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=3.6.0 <4.0.0"
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.20.2
+
+flutter:
+  uses-material-design: true
+
+# Regenerate with the intl_utils tool (flutter_intl) from this package.
+flutter_intl:
+  enabled: true
+  class_name: S
+  arb_dir: lib/l10n
+  output_dir: lib

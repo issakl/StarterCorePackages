@@ -1,0 +1,38 @@
+name: starter_infra
+description: >-
+  Shared infrastructure / IO layer: Dio networking stack (client, interceptors,
+  response validators, model factory), the remote datasource base, and local
+  key-value storage. Depends on starter_core; app-specific concerns (config,
+  auth) are injected via NetworkRuntime rather than imported.
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=3.6.0 <4.0.0"
+
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  starter_core:
+    path: ../starter_core
+  # Networking
+  dio: ^5.3.3
+  pretty_dio_logger: ^1.3.1
+  http_parser: ^4.0.2
+  # Functional result types used across the datasource layer
+  dartz: ^0.10.1
+  # Local storage
+  shared_preferences: ^2.0.18
+  # Logging + i18n helpers referenced by the networking stack
+  logger: ^2.0.2+1
+  intl: ^0.20.2
+  # DI annotations (registration happens in each app)
+  injectable: ^2.1.0
+  # Service locator (remote_data_source resolves GetIt.I<HttpClient>).
+  get_it: ^7.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

@@ -1,0 +1,35 @@
+name: starter_core
+description: >-
+  Foundational layer shared across all apps and features: domain entities,
+  data models, use-case/repository contracts, result & error types, base
+  params, shared enums and preference keys. Depended on by every feature and
+  by the other starter_* packages.
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=3.6.0 <4.0.0"
+
+# Member of the monorepo pub workspace (see repo-root pubspec.yaml).
+resolution: workspace
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Value equality for entities/models.
+  equatable: ^2.0.5
+  # Either/Result functional types used by result.dart / usecases.
+  dartz: ^0.10.1
+  # DioException is referenced by http_error.dart.
+  dio: ^5.3.3
+  # Immutable unions for app error types.
+  freezed_annotation: ^2.2.0
+  # Service locator + logger used by logger_extension (reads GetIt.I<Logger>).
+  get_it: ^7.2.0
+  logger: ^2.0.2+1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.3.3
+  freezed: ^2.3.2

@@ -1,0 +1,23 @@
+name: corepackages_workspace
+description: >-
+  Monorepo root for the Starter's shared core packages, extracted so they can
+  be versioned and consumed independently (as a git dependency) by any app.
+publish_to: "none"
+
+environment:
+  sdk: ">=3.6.0 <4.0.0"
+
+# Dart pub workspace members. Every package listed here (and each with
+# `resolution: workspace` in its own pubspec) shares one resolution and one
+# root pubspec.lock -- this is only used when developing these packages here
+# together; consuming apps pull each package individually via a git
+# dependency (see README.md) and are not part of this workspace.
+workspace:
+  - starter_core
+  - starter_infra
+  - starter_localization
+  - starter_ui
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

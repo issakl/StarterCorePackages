@@ -1,0 +1,30 @@
+name: corepackages_workspace
+
+# Melos is an optional task runner layered on top of the native Dart pub
+# workspace declared in pubspec.yaml. Install it once with:
+#   dart pub global activate melos
+# then run scripts below, e.g. `melos analyze`.
+packages:
+  - starter_core
+  - starter_infra
+  - starter_localization
+  - starter_ui
+
+command:
+  bootstrap:
+    runPubGetInParallel: false
+
+scripts:
+  analyze:
+    description: Analyze all packages.
+    run: flutter analyze
+    exec:
+      concurrency: 4
+
+  test:
+    description: Run tests in every package that has them.
+    run: flutter test
+    exec:
+      concurrency: 4
+    packageFilters:
+      dirExists: test
