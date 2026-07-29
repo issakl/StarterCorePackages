@@ -1,0 +1,21 @@
+name: starter_codegen
+description: >-
+  Config-driven code generator that scaffolds a clean-architecture API
+  request/response slice (entity, model, param, datasource, repository,
+  usecase, state, cubit) for an existing feature from a JSON config. Pure
+  Dart, no runtime dependency on the other starter_* packages — consuming
+  apps add it as a dev_dependency and run its bin/generate_api.dart.
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=3.6.0 <4.0.0"
+
+# Member of the monorepo pub workspace (see repo-root pubspec.yaml). Unlike
+# starter_core/infra/ui/localization, this package has no path: dependency
+# on its siblings, so its `ref:` in a consuming app's pubspec.yaml does not
+# need to be kept in lockstep with theirs.
+resolution: workspace
+
+dependencies:
+  change_case: ^2.0.1

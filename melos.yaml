@@ -5,6 +5,7 @@ name: corepackages_workspace
 #   dart pub global activate melos
 # then run scripts below, e.g. `melos analyze`.
 packages:
+  - starter_codegen
   - starter_core
   - starter_infra
   - starter_localization

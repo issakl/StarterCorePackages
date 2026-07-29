@@ -13,6 +13,7 @@ environment:
 # together; consuming apps pull each package individually via a git
 # dependency (see README.md) and are not part of this workspace.
 workspace:
+  - starter_codegen
   - starter_core
   - starter_infra
   - starter_localization
