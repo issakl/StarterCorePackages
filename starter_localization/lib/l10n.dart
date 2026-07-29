@@ -64,16 +64,6 @@ class CoreS {
     );
   }
 
-  /// `An error has been occurred, please click send to help us fixing the problem`
-  String get reportError {
-    return Intl.message(
-      'An error has been occurred, please click send to help us fixing the problem',
-      name: 'reportError',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Unauthorized`
   String get unauthorized {
     return Intl.message(
@@ -124,31 +114,11 @@ class CoreS {
     );
   }
 
-  /// `Not valid response`
-  String get notValidResponse {
-    return Intl.message(
-      'Not valid response',
-      name: 'notValidResponse',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Connection time out`
   String get connectionTimeOut {
     return Intl.message(
       'Connection time out',
       name: 'connectionTimeOut',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Bad certificate error 😢`
-  String get badCertificateMsg {
-    return Intl.message(
-      'Bad certificate error 😢',
-      name: 'badCertificateMsg',
       desc: '',
       args: [],
     );
@@ -204,31 +174,6 @@ class CoreS {
     return Intl.message('No data', name: 'noDataRefresher', desc: '', args: []);
   }
 
-  /// `This field can't be empty`
-  String get errorTxt {
-    return Intl.message(
-      'This field can\'t be empty',
-      name: 'errorTxt',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Logout`
-  String get logOut {
-    return Intl.message('Logout', name: 'logOut', desc: '', args: []);
-  }
-
-  /// `Change Language`
-  String get changeLanguage {
-    return Intl.message(
-      'Change Language',
-      name: 'changeLanguage',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Cancel`
   String get cancel {
     return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
@@ -249,51 +194,11 @@ class CoreS {
     );
   }
 
-  /// `Login`
-  String get login {
-    return Intl.message('Login', name: 'login', desc: '', args: []);
-  }
-
-  /// `Welcome`
-  String get welcome {
-    return Intl.message('Welcome', name: 'welcome', desc: '', args: []);
-  }
-
   /// `Press twice to exit`
   String get pressTwiceToExit {
     return Intl.message(
       'Press twice to exit',
       name: 'pressTwiceToExit',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `User name`
-  String get userName {
-    return Intl.message('User name', name: 'userName', desc: '', args: []);
-  }
-
-  /// `Password`
-  String get password {
-    return Intl.message('Password', name: 'password', desc: '', args: []);
-  }
-
-  /// `Please enter a valid phone number ex: 09xx-xxx-xxx`
-  String get invalidPhoneNumber {
-    return Intl.message(
-      'Please enter a valid phone number ex: 09xx-xxx-xxx',
-      name: 'invalidPhoneNumber',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Invalid password`
-  String get invalidPassword {
-    return Intl.message(
-      'Invalid password',
-      name: 'invalidPassword',
       desc: '',
       args: [],
     );
@@ -309,54 +214,9 @@ class CoreS {
     return Intl.message('Close App', name: 'closeApp', desc: '', args: []);
   }
 
-  /// `Update Required`
-  String get updateTitle {
-    return Intl.message(
-      'Update Required',
-      name: 'updateTitle',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `For the best experience, update to the latest version to get new features and improvements.`
-  String get updateMessage {
-    return Intl.message(
-      'For the best experience, update to the latest version to get new features and improvements.',
-      name: 'updateMessage',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Empty`
-  String get empty {
-    return Intl.message('Empty', name: 'empty', desc: '', args: []);
-  }
-
-  /// `Close`
-  String get close {
-    return Intl.message('Close', name: 'close', desc: '', args: []);
-  }
-
-  /// `The page has no content ..`
-  String get pageEmpty {
-    return Intl.message(
-      'The page has no content ..',
-      name: 'pageEmpty',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Refresh`
   String get refresh {
     return Intl.message('Refresh', name: 'refresh', desc: '', args: []);
-  }
-
-  /// `Apply`
-  String get apply {
-    return Intl.message('Apply', name: 'apply', desc: '', args: []);
   }
 
   /// `An error happened while connecting to server, please try again later`
@@ -369,64 +229,9 @@ class CoreS {
     );
   }
 
-  /// `The connection has been interrupted`
-  String get errorCancelToken {
-    return Intl.message(
-      'The connection has been interrupted',
-      name: 'errorCancelToken',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Signup`
-  String get signUp {
-    return Intl.message('Signup', name: 'signUp', desc: '', args: []);
-  }
-
-  /// `Or`
-  String get or {
-    return Intl.message('Or', name: 'or', desc: '', args: []);
-  }
-
-  /// `Phone Number`
-  String get phone {
-    return Intl.message('Phone Number', name: 'phone', desc: '', args: []);
-  }
-
   /// `Ok`
   String get ok {
     return Intl.message('Ok', name: 'ok', desc: '', args: []);
-  }
-
-  /// `Confirm Password`
-  String get confirmPassword {
-    return Intl.message(
-      'Confirm Password',
-      name: 'confirmPassword',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Password and confirm password doesn't match`
-  String get invalidConfirmPassword {
-    return Intl.message(
-      'Password and confirm password doesn\'t match',
-      name: 'invalidConfirmPassword',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `First Name`
-  String get firstName {
-    return Intl.message('First Name', name: 'firstName', desc: '', args: []);
-  }
-
-  /// `Last Name`
-  String get lastName {
-    return Intl.message('Last Name', name: 'lastName', desc: '', args: []);
   }
 
   /// `This field mustn't be empty`
@@ -434,16 +239,6 @@ class CoreS {
     return Intl.message(
       'This field mustn\'t be empty',
       name: 'errorEmptyField',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Switch theme`
-  String get switchTheme {
-    return Intl.message(
-      'Switch theme',
-      name: 'switchTheme',
       desc: '',
       args: [],
     );
@@ -489,11 +284,6 @@ class CoreS {
     );
   }
 
-  /// `Send`
-  String get send {
-    return Intl.message('Send', name: 'send', desc: '', args: []);
-  }
-
   /// `Couldn't find path`
   String get mapPathError {
     return Intl.message(
@@ -519,16 +309,6 @@ class CoreS {
     return Intl.message(
       'OTP Verification',
       name: 'otpVerification',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `please type the verification code send to`
-  String get enterCodeText {
-    return Intl.message(
-      'please type the verification code send to',
-      name: 'enterCodeText',
       desc: '',
       args: [],
     );
@@ -709,81 +489,6 @@ class CoreS {
     );
   }
 
-  /// `Home Page`
-  String get homePage {
-    return Intl.message('Home Page', name: 'homePage', desc: '', args: []);
-  }
-
-  /// `Translation Test`
-  String get translationTest {
-    return Intl.message(
-      'Translation Test',
-      name: 'translationTest',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Just Log`
-  String get justLog {
-    return Intl.message('Just Log', name: 'justLog', desc: '', args: []);
-  }
-
-  /// `Test Success Request`
-  String get testSuccessRequest {
-    return Intl.message(
-      'Test Success Request',
-      name: 'testSuccessRequest',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Test Failure Request`
-  String get testFailureRequest {
-    return Intl.message(
-      'Test Failure Request',
-      name: 'testFailureRequest',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Test Validator Request`
-  String get testValidatorRequest {
-    return Intl.message(
-      'Test Validator Request',
-      name: 'testValidatorRequest',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Get People`
-  String get getPeople {
-    return Intl.message('Get People', name: 'getPeople', desc: '', args: []);
-  }
-
-  /// `Get Pokemons`
-  String get getPokemons {
-    return Intl.message(
-      'Get Pokemons',
-      name: 'getPokemons',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Test Error Handler`
-  String get testErrorScreen {
-    return Intl.message(
-      'Test Error Handler',
-      name: 'testErrorScreen',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `This field is required`
   String get thisFieldIsRequired {
     return Intl.message(
@@ -833,6 +538,16 @@ class CoreS {
       args: [],
     );
   }
+
+  /// `Invalid password`
+  String get invalidPassword {
+    return Intl.message(
+      'Invalid password',
+      name: 'invalidPassword',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<CoreS> {
@@ -842,7 +557,6 @@ class AppLocalizationDelegate extends LocalizationsDelegate<CoreS> {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
       Locale.fromSubtags(languageCode: 'ar'),
-      Locale.fromSubtags(languageCode: 'ar', countryCode: 'IQ'),
     ];
   }
 

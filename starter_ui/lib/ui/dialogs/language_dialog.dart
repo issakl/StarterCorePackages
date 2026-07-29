@@ -147,9 +147,6 @@ class LanguageDialogState extends State<LanguageDialog> {
                           // BlocProvider.of<HomeInitBloc>(context)
                           //     .add(GetHomeInitEvent(CancelToken()));
                           break;
-                        case 2:
-                          changeLanguage(
-                              context, const Locale(AppConstants.LANG_AR, 'IQ'));
                       }
                       // Navigator.of(context).pop();
                       Nav.pop();
