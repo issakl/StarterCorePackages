@@ -1,4 +1,3 @@
-import 'package:starter_core/models/base_model.dart';
 import 'package:starter_infra/net/create_model_interceptor/create_model.interceptor.dart';
 
 /// This class is singleton and used to get models from json responses
@@ -40,14 +39,21 @@ class ModelsFactory {
   }
 
   /// Generate the desired T model.
-  T createModel<T extends BaseModel>(json, bool isList) {
+  T createModel<T>(json, bool isList) {
     final modelName = getModelName(T.toString(), isList);
     final modelInfo = _modelsMap[modelName];
+    if (modelInfo == null) {
+      throw StateError('Model $modelName is not registered in ModelsFactory');
+    }
     final fromJson = modelInfo[FROM_JSON];
     final createModelInterceptor = modelInfo[CREATE_MODEL_INTERCEPTOR];
     final model = createModelInterceptor.getModel(fromJson, json);
     return model;
   }
+
+  /// Whether a model has been registered under [modelName].
+  bool isRegistered(String modelName, {bool isList = false}) =>
+      _modelsMap.containsKey(getModelName(modelName, isList));
 
   /// Generate list of T model.
   // List<T?> createModelsList<T extends BaseModel>(json) {
