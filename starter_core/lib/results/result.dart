@@ -42,12 +42,9 @@ class Result<Error extends AppErrors, Data> {
     );
   }
 
-  /// returns just data
+  /// returns just data (a `null` value still counts as data)
   factory Result.data(Data? data) {
-    return Result(
-      error: null,
-      data: data,
-    );
+    return Result._(data, null, true);
   }
 
   /// returns error and data
