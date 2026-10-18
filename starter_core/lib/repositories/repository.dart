@@ -19,15 +19,8 @@ abstract class Repository {
 
   Result<AppErrors, T> executeForNoEntity<T>({
     required Either<AppErrors, T> remoteResult,
-  }) {
-    if (remoteResult.isRight()) {
-      return Result(
-        data: (remoteResult as Right<AppErrors, T>).value,
-      );
-    } else {
-      return Result(error: (remoteResult as Left<AppErrors, T>).value);
-    }
-  }
+  }) =>
+      Result.fromEither(remoteResult);
 
   Result<AppErrors, List<Entity>> executeForList<
           Model extends BaseModel<Entity>, Entity extends BaseEntity>(
