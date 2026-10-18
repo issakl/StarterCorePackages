@@ -12,7 +12,6 @@ import 'package:starter_core/constants/enums/app_options_enum.dart';
 /// UiRuntime.appLanguageProvider = () => AppConfig().appLanguage;
 /// UiRuntime.changeLangRestartProvider = () => AppConfig().appOptions.changeLangRestart;
 /// UiRuntime.errorViewOptionProvider = () => AppConfig().appOptions.errorViewOption;
-/// UiRuntime.onRefreshRouter = () => GetIt.I<NavigationRoute>().refreshRouter();
 /// UiRuntime.onChangeLanguage = (context, locale) =>
 ///     LocalizationProvider().changeLanguage(locale, context);
 /// UiRuntime.fontFamilyForLocaleProvider = (locale) =>
@@ -44,7 +43,7 @@ class UiRuntime {
       () => ErrorWidgetOptions.LOTTIE;
   static ErrorWidgetOptions get errorViewOption => errorViewOptionProvider();
 
-  /// Rebuilds the app's router (used after a restart).
+  /// Optional hook run when the app restarts (see `RestartWidget`).
   static VoidCallback onRefreshRouter = () {};
 
   /// Applies an app language change.
