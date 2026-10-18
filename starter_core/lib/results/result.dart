@@ -1,20 +1,38 @@
+import 'dart:async';
+
+import 'package:dartz/dartz.dart';
 import 'package:starter_core/errors/app_errors.dart';
 
 class Result<Error extends AppErrors, Data> {
   final Data? data;
   final Error? error;
 
-  Result({this.data, this.error}) : assert(data != null || error != null);
+  /// Whether a value was supplied, even if that value is `null` (e.g. a
+  /// `void` response coming from [Result.fromEither]).
+  final bool _hasData;
+
+  Result({this.data, this.error})
+      : _hasData = data != null,
+        assert(data != null || error != null);
+
+  Result._(this.data, this.error, this._hasData);
+
+  /// Bridges a dartz [Either]. A successful `null`/`void` value is still
+  /// treated as data.
+  factory Result.fromEither(Either<Error, Data> either) => either.fold(
+        (error) => Result._(null, error, false),
+        (data) => Result._(data, null, true),
+      );
 
   /// checks whether data is available
-  bool get hasDataOnly => data != null && error == null;
+  bool get hasDataOnly => _hasData && error == null;
 
   /// checks whether an error is present
-  bool get hasErrorOnly => data == null && error != null;
+  bool get hasErrorOnly => !_hasData && error != null;
 
   /// checks whether data and error is present
   /// error from network data source and data from cache data source
-  bool get hasDataAndError => data != null && error != null;
+  bool get hasDataAndError => _hasData && error != null;
 
   /// returns the error
   factory Result.error(Error error) {
@@ -63,9 +81,24 @@ class Result<Error extends AppErrors, Data> {
     if (hasErrorOnly) {
       onError.call(error!);
     } else if (hasDataOnly) {
-      onData.call(data!);
+      onData.call(data as Data);
     } else {
-      onErrorWithData?.call(data!, error!);
+      onErrorWithData?.call(data as Data, error!);
+    }
+  }
+
+  /// Same as [pick] but awaits the callbacks, for async handlers.
+  Future<void> pickAsync({
+    required FutureOr<void> Function(Data data) onData,
+    required FutureOr<void> Function(Error error) onError,
+    FutureOr<void> Function(Data data, Error error)? onErrorWithData,
+  }) async {
+    if (hasErrorOnly) {
+      await onError(error!);
+    } else if (hasDataOnly) {
+      await onData(data as Data);
+    } else {
+      await onErrorWithData?.call(data as Data, error!);
     }
   }
 }
