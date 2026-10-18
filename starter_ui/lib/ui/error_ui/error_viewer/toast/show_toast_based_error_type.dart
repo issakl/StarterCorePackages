@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:starter_core/errors/app_errors.dart';
+import 'package:starter_core/errors/app_errors_extension.dart';
 import 'package:starter_localization/l10n.dart';
 import '../error_viewer.dart';
 import 'errv_toast_options.dart';
@@ -158,6 +159,62 @@ void showToastBasedErrorType(
     guestError: (_) {
       ErrorViewer.showGuestError(
         errorViewerOptions: errVToastOptions,
+      );
+    },
+    branchNotSelectedError: (error) {
+      ErrorViewer.showCustomError(
+        context,
+        error.message,
+        errorViewerOptions: errVToastOptions,
+        callback: callback,
+      );
+    },
+    unprocessableEntityError: (error) {
+      ErrorViewer.showCustomError(
+        context,
+        error.message,
+        errorViewerOptions: errVToastOptions,
+        callback: callback,
+      );
+    },
+    outdatedVersionError: (error) {
+      ErrorViewer.showCustomError(
+        context,
+        error.message,
+        errorViewerOptions: errVToastOptions,
+        callback: callback,
+      );
+    },
+    suspendedAccountError: (error) {
+      ErrorViewer.showCustomError(
+        context,
+        error.message,
+        errorViewerOptions: errVToastOptions,
+        callback: callback,
+      );
+    },
+    deactivatedAccountError: (error) {
+      ErrorViewer.showCustomError(
+        context,
+        error.message,
+        errorViewerOptions: errVToastOptions,
+        callback: callback,
+      );
+    },
+    customHttpError: (error) {
+      ErrorViewer.showCustomError(
+        context,
+        AppErrorsMessage(error).message,
+        errorViewerOptions: errVToastOptions,
+        callback: callback,
+      );
+    },
+    serializationError: (error) {
+      ErrorViewer.showCustomError(
+        context,
+        error.message,
+        errorViewerOptions: errVToastOptions,
+        callback: callback,
       );
     },
   );

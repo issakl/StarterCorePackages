@@ -19,7 +19,7 @@ mixin _$AppErrors {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -37,15 +37,27 @@ mixin _$AppErrors {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -62,15 +74,24 @@ mixin _$AppErrors {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -87,9 +108,18 @@ mixin _$AppErrors {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -118,6 +148,17 @@ mixin _$AppErrors {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -144,6 +185,13 @@ mixin _$AppErrors {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -170,6 +218,13 @@ mixin _$AppErrors {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -237,7 +292,7 @@ class _$ConnectionErrorImpl implements ConnectionError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -255,9 +310,21 @@ class _$ConnectionErrorImpl implements ConnectionError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
     return connectionError();
   }
@@ -266,7 +333,7 @@ class _$ConnectionErrorImpl implements ConnectionError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -283,9 +350,18 @@ class _$ConnectionErrorImpl implements ConnectionError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
     return connectionError?.call();
   }
@@ -294,7 +370,7 @@ class _$ConnectionErrorImpl implements ConnectionError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -311,9 +387,18 @@ class _$ConnectionErrorImpl implements ConnectionError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (connectionError != null) {
@@ -348,6 +433,17 @@ class _$ConnectionErrorImpl implements ConnectionError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return connectionError(this);
   }
@@ -377,6 +473,13 @@ class _$ConnectionErrorImpl implements ConnectionError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return connectionError?.call(this);
   }
@@ -406,6 +509,13 @@ class _$ConnectionErrorImpl implements ConnectionError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (connectionError != null) {
@@ -424,6 +534,8 @@ abstract class _$$InternalServerErrorImplCopyWith<$Res> {
   factory _$$InternalServerErrorImplCopyWith(_$InternalServerErrorImpl value,
           $Res Function(_$InternalServerErrorImpl) then) =
       __$$InternalServerErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -436,33 +548,58 @@ class __$$InternalServerErrorImplCopyWithImpl<$Res>
 
   /// Create a copy of AppErrors
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$InternalServerErrorImpl(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$InternalServerErrorImpl implements InternalServerError {
-  const _$InternalServerErrorImpl();
+  const _$InternalServerErrorImpl({this.message});
+
+  @override
+  final String? message;
 
   @override
   String toString() {
-    return 'AppErrors.internalServerError()';
+    return 'AppErrors.internalServerError(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$InternalServerErrorImpl);
+            other is _$InternalServerErrorImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$InternalServerErrorImplCopyWith<_$InternalServerErrorImpl> get copyWith =>
+      __$$InternalServerErrorImplCopyWithImpl<_$InternalServerErrorImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -480,18 +617,30 @@ class _$InternalServerErrorImpl implements InternalServerError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
-    return internalServerError();
+    return internalServerError(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -508,18 +657,27 @@ class _$InternalServerErrorImpl implements InternalServerError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
-    return internalServerError?.call();
+    return internalServerError?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -536,13 +694,22 @@ class _$InternalServerErrorImpl implements InternalServerError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (internalServerError != null) {
-      return internalServerError();
+      return internalServerError(message);
     }
     return orElse();
   }
@@ -573,6 +740,17 @@ class _$InternalServerErrorImpl implements InternalServerError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return internalServerError(this);
   }
@@ -602,6 +780,13 @@ class _$InternalServerErrorImpl implements InternalServerError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return internalServerError?.call(this);
   }
@@ -631,6 +816,13 @@ class _$InternalServerErrorImpl implements InternalServerError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (internalServerError != null) {
@@ -641,7 +833,16 @@ class _$InternalServerErrorImpl implements InternalServerError {
 }
 
 abstract class InternalServerError implements AppErrors, HttpError {
-  const factory InternalServerError() = _$InternalServerErrorImpl;
+  const factory InternalServerError({final String? message}) =
+      _$InternalServerErrorImpl;
+
+  String? get message;
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$InternalServerErrorImplCopyWith<_$InternalServerErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -734,7 +935,7 @@ class _$InternalServerWithDataErrorImpl implements InternalServerWithDataError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -752,9 +953,21 @@ class _$InternalServerWithDataErrorImpl implements InternalServerWithDataError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
     return internalServerWithDataError(errorCode, message, type);
   }
@@ -763,7 +976,7 @@ class _$InternalServerWithDataErrorImpl implements InternalServerWithDataError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -780,9 +993,18 @@ class _$InternalServerWithDataErrorImpl implements InternalServerWithDataError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
     return internalServerWithDataError?.call(errorCode, message, type);
   }
@@ -791,7 +1013,7 @@ class _$InternalServerWithDataErrorImpl implements InternalServerWithDataError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -808,9 +1030,18 @@ class _$InternalServerWithDataErrorImpl implements InternalServerWithDataError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (internalServerWithDataError != null) {
@@ -845,6 +1076,17 @@ class _$InternalServerWithDataErrorImpl implements InternalServerWithDataError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return internalServerWithDataError(this);
   }
@@ -874,6 +1116,13 @@ class _$InternalServerWithDataErrorImpl implements InternalServerWithDataError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return internalServerWithDataError?.call(this);
   }
@@ -903,6 +1152,13 @@ class _$InternalServerWithDataErrorImpl implements InternalServerWithDataError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (internalServerWithDataError != null) {
@@ -973,7 +1229,7 @@ class _$AccountNotVerifiedErrorImpl implements AccountNotVerifiedError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -991,9 +1247,21 @@ class _$AccountNotVerifiedErrorImpl implements AccountNotVerifiedError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
     return accountNotVerifiedError();
   }
@@ -1002,7 +1270,7 @@ class _$AccountNotVerifiedErrorImpl implements AccountNotVerifiedError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -1019,9 +1287,18 @@ class _$AccountNotVerifiedErrorImpl implements AccountNotVerifiedError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
     return accountNotVerifiedError?.call();
   }
@@ -1030,7 +1307,7 @@ class _$AccountNotVerifiedErrorImpl implements AccountNotVerifiedError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -1047,9 +1324,18 @@ class _$AccountNotVerifiedErrorImpl implements AccountNotVerifiedError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (accountNotVerifiedError != null) {
@@ -1084,6 +1370,17 @@ class _$AccountNotVerifiedErrorImpl implements AccountNotVerifiedError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return accountNotVerifiedError(this);
   }
@@ -1113,6 +1410,13 @@ class _$AccountNotVerifiedErrorImpl implements AccountNotVerifiedError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return accountNotVerifiedError?.call(this);
   }
@@ -1142,6 +1446,13 @@ class _$AccountNotVerifiedErrorImpl implements AccountNotVerifiedError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (accountNotVerifiedError != null) {
@@ -1226,7 +1537,7 @@ class _$BadRequestErrorImpl implements BadRequestError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -1244,9 +1555,21 @@ class _$BadRequestErrorImpl implements BadRequestError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
     return badRequestError(message);
   }
@@ -1255,7 +1578,7 @@ class _$BadRequestErrorImpl implements BadRequestError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -1272,9 +1595,18 @@ class _$BadRequestErrorImpl implements BadRequestError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
     return badRequestError?.call(message);
   }
@@ -1283,7 +1615,7 @@ class _$BadRequestErrorImpl implements BadRequestError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -1300,9 +1632,18 @@ class _$BadRequestErrorImpl implements BadRequestError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (badRequestError != null) {
@@ -1337,6 +1678,17 @@ class _$BadRequestErrorImpl implements BadRequestError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return badRequestError(this);
   }
@@ -1366,6 +1718,13 @@ class _$BadRequestErrorImpl implements BadRequestError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return badRequestError?.call(this);
   }
@@ -1395,6 +1754,13 @@ class _$BadRequestErrorImpl implements BadRequestError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (badRequestError != null) {
@@ -1485,7 +1851,7 @@ class _$CancelErrorImpl implements CancelError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -1503,9 +1869,21 @@ class _$CancelErrorImpl implements CancelError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
     return cancelError(message);
   }
@@ -1514,7 +1892,7 @@ class _$CancelErrorImpl implements CancelError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -1531,9 +1909,18 @@ class _$CancelErrorImpl implements CancelError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
     return cancelError?.call(message);
   }
@@ -1542,7 +1929,7 @@ class _$CancelErrorImpl implements CancelError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -1559,9 +1946,18 @@ class _$CancelErrorImpl implements CancelError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (cancelError != null) {
@@ -1596,6 +1992,17 @@ class _$CancelErrorImpl implements CancelError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return cancelError(this);
   }
@@ -1625,6 +2032,13 @@ class _$CancelErrorImpl implements CancelError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return cancelError?.call(this);
   }
@@ -1654,6 +2068,13 @@ class _$CancelErrorImpl implements CancelError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (cancelError != null) {
@@ -1717,7 +2138,7 @@ class _$ConflictErrorImpl implements ConflictError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -1735,9 +2156,21 @@ class _$ConflictErrorImpl implements ConflictError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
     return conflictError();
   }
@@ -1746,7 +2179,7 @@ class _$ConflictErrorImpl implements ConflictError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -1763,9 +2196,18 @@ class _$ConflictErrorImpl implements ConflictError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
     return conflictError?.call();
   }
@@ -1774,7 +2216,7 @@ class _$ConflictErrorImpl implements ConflictError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -1791,9 +2233,18 @@ class _$ConflictErrorImpl implements ConflictError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (conflictError != null) {
@@ -1828,6 +2279,17 @@ class _$ConflictErrorImpl implements ConflictError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return conflictError(this);
   }
@@ -1857,6 +2319,13 @@ class _$ConflictErrorImpl implements ConflictError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return conflictError?.call(this);
   }
@@ -1886,6 +2355,13 @@ class _$ConflictErrorImpl implements ConflictError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (conflictError != null) {
@@ -1969,7 +2445,7 @@ class _$CustomErrorImpl implements CustomError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -1987,9 +2463,21 @@ class _$CustomErrorImpl implements CustomError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
     return customError(message);
   }
@@ -1998,7 +2486,7 @@ class _$CustomErrorImpl implements CustomError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -2015,9 +2503,18 @@ class _$CustomErrorImpl implements CustomError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
     return customError?.call(message);
   }
@@ -2026,7 +2523,7 @@ class _$CustomErrorImpl implements CustomError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -2043,9 +2540,18 @@ class _$CustomErrorImpl implements CustomError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (customError != null) {
@@ -2080,6 +2586,17 @@ class _$CustomErrorImpl implements CustomError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return customError(this);
   }
@@ -2109,6 +2626,13 @@ class _$CustomErrorImpl implements CustomError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return customError?.call(this);
   }
@@ -2138,6 +2662,13 @@ class _$CustomErrorImpl implements CustomError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (customError != null) {
@@ -2201,7 +2732,7 @@ class _$ForbiddenErrorImpl implements ForbiddenError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -2219,9 +2750,21 @@ class _$ForbiddenErrorImpl implements ForbiddenError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
     return forbiddenError();
   }
@@ -2230,7 +2773,7 @@ class _$ForbiddenErrorImpl implements ForbiddenError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -2247,9 +2790,18 @@ class _$ForbiddenErrorImpl implements ForbiddenError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
     return forbiddenError?.call();
   }
@@ -2258,7 +2810,7 @@ class _$ForbiddenErrorImpl implements ForbiddenError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -2275,9 +2827,18 @@ class _$ForbiddenErrorImpl implements ForbiddenError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (forbiddenError != null) {
@@ -2312,6 +2873,17 @@ class _$ForbiddenErrorImpl implements ForbiddenError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return forbiddenError(this);
   }
@@ -2341,6 +2913,13 @@ class _$ForbiddenErrorImpl implements ForbiddenError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return forbiddenError?.call(this);
   }
@@ -2370,6 +2949,13 @@ class _$ForbiddenErrorImpl implements ForbiddenError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (forbiddenError != null) {
@@ -2425,7 +3011,7 @@ class _$FormatErrorImpl implements FormatError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -2443,9 +3029,21 @@ class _$FormatErrorImpl implements FormatError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
     return formatError();
   }
@@ -2454,7 +3052,7 @@ class _$FormatErrorImpl implements FormatError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -2471,9 +3069,18 @@ class _$FormatErrorImpl implements FormatError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
     return formatError?.call();
   }
@@ -2482,7 +3089,7 @@ class _$FormatErrorImpl implements FormatError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -2499,9 +3106,18 @@ class _$FormatErrorImpl implements FormatError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (formatError != null) {
@@ -2536,6 +3152,17 @@ class _$FormatErrorImpl implements FormatError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return formatError(this);
   }
@@ -2565,6 +3192,13 @@ class _$FormatErrorImpl implements FormatError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return formatError?.call(this);
   }
@@ -2594,6 +3228,13 @@ class _$FormatErrorImpl implements FormatError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (formatError != null) {
@@ -2649,7 +3290,7 @@ class _$LoginRequiredErrorImpl implements LoginRequiredError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -2667,9 +3308,21 @@ class _$LoginRequiredErrorImpl implements LoginRequiredError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
     return loginRequiredError();
   }
@@ -2678,7 +3331,7 @@ class _$LoginRequiredErrorImpl implements LoginRequiredError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -2695,9 +3348,18 @@ class _$LoginRequiredErrorImpl implements LoginRequiredError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
     return loginRequiredError?.call();
   }
@@ -2706,7 +3368,7 @@ class _$LoginRequiredErrorImpl implements LoginRequiredError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -2723,9 +3385,18 @@ class _$LoginRequiredErrorImpl implements LoginRequiredError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (loginRequiredError != null) {
@@ -2760,6 +3431,17 @@ class _$LoginRequiredErrorImpl implements LoginRequiredError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return loginRequiredError(this);
   }
@@ -2789,6 +3471,13 @@ class _$LoginRequiredErrorImpl implements LoginRequiredError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return loginRequiredError?.call(this);
   }
@@ -2818,6 +3507,13 @@ class _$LoginRequiredErrorImpl implements LoginRequiredError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (loginRequiredError != null) {
@@ -2873,7 +3569,7 @@ class _$NetErrorImpl implements NetError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -2891,9 +3587,21 @@ class _$NetErrorImpl implements NetError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
     return netError();
   }
@@ -2902,7 +3610,7 @@ class _$NetErrorImpl implements NetError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -2919,9 +3627,18 @@ class _$NetErrorImpl implements NetError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
     return netError?.call();
   }
@@ -2930,7 +3647,7 @@ class _$NetErrorImpl implements NetError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -2947,9 +3664,18 @@ class _$NetErrorImpl implements NetError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (netError != null) {
@@ -2984,6 +3710,17 @@ class _$NetErrorImpl implements NetError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return netError(this);
   }
@@ -3013,6 +3750,13 @@ class _$NetErrorImpl implements NetError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return netError?.call(this);
   }
@@ -3042,6 +3786,13 @@ class _$NetErrorImpl implements NetError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (netError != null) {
@@ -3125,7 +3876,7 @@ class _$NotFoundErrorImpl implements NotFoundError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -3143,9 +3894,21 @@ class _$NotFoundErrorImpl implements NotFoundError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
     return notFoundError(requestedUrlPath);
   }
@@ -3154,7 +3917,7 @@ class _$NotFoundErrorImpl implements NotFoundError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -3171,9 +3934,18 @@ class _$NotFoundErrorImpl implements NotFoundError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
     return notFoundError?.call(requestedUrlPath);
   }
@@ -3182,7 +3954,7 @@ class _$NotFoundErrorImpl implements NotFoundError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -3199,9 +3971,18 @@ class _$NotFoundErrorImpl implements NotFoundError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (notFoundError != null) {
@@ -3236,6 +4017,17 @@ class _$NotFoundErrorImpl implements NotFoundError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return notFoundError(this);
   }
@@ -3265,6 +4057,13 @@ class _$NotFoundErrorImpl implements NotFoundError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return notFoundError?.call(this);
   }
@@ -3294,6 +4093,13 @@ class _$NotFoundErrorImpl implements NotFoundError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (notFoundError != null) {
@@ -3358,7 +4164,7 @@ class _$ResponseErrorImpl implements ResponseError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -3376,9 +4182,21 @@ class _$ResponseErrorImpl implements ResponseError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
     return responseError();
   }
@@ -3387,7 +4205,7 @@ class _$ResponseErrorImpl implements ResponseError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -3404,9 +4222,18 @@ class _$ResponseErrorImpl implements ResponseError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
     return responseError?.call();
   }
@@ -3415,7 +4242,7 @@ class _$ResponseErrorImpl implements ResponseError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -3432,9 +4259,18 @@ class _$ResponseErrorImpl implements ResponseError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (responseError != null) {
@@ -3469,6 +4305,17 @@ class _$ResponseErrorImpl implements ResponseError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return responseError(this);
   }
@@ -3498,6 +4345,13 @@ class _$ResponseErrorImpl implements ResponseError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return responseError?.call(this);
   }
@@ -3527,6 +4381,13 @@ class _$ResponseErrorImpl implements ResponseError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (responseError != null) {
@@ -3585,7 +4446,7 @@ class _$ScreenNotImplementedErrorImpl implements ScreenNotImplementedError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -3603,9 +4464,21 @@ class _$ScreenNotImplementedErrorImpl implements ScreenNotImplementedError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
     return screenNotImplementedError();
   }
@@ -3614,7 +4487,7 @@ class _$ScreenNotImplementedErrorImpl implements ScreenNotImplementedError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -3631,9 +4504,18 @@ class _$ScreenNotImplementedErrorImpl implements ScreenNotImplementedError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
     return screenNotImplementedError?.call();
   }
@@ -3642,7 +4524,7 @@ class _$ScreenNotImplementedErrorImpl implements ScreenNotImplementedError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -3659,9 +4541,18 @@ class _$ScreenNotImplementedErrorImpl implements ScreenNotImplementedError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (screenNotImplementedError != null) {
@@ -3696,6 +4587,17 @@ class _$ScreenNotImplementedErrorImpl implements ScreenNotImplementedError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return screenNotImplementedError(this);
   }
@@ -3725,6 +4627,13 @@ class _$ScreenNotImplementedErrorImpl implements ScreenNotImplementedError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return screenNotImplementedError?.call(this);
   }
@@ -3754,6 +4663,13 @@ class _$ScreenNotImplementedErrorImpl implements ScreenNotImplementedError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (screenNotImplementedError != null) {
@@ -3809,7 +4725,7 @@ class _$SocketErrorImpl implements SocketError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -3827,9 +4743,21 @@ class _$SocketErrorImpl implements SocketError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
     return socketError();
   }
@@ -3838,7 +4766,7 @@ class _$SocketErrorImpl implements SocketError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -3855,9 +4783,18 @@ class _$SocketErrorImpl implements SocketError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
     return socketError?.call();
   }
@@ -3866,7 +4803,7 @@ class _$SocketErrorImpl implements SocketError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -3883,9 +4820,18 @@ class _$SocketErrorImpl implements SocketError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (socketError != null) {
@@ -3920,6 +4866,17 @@ class _$SocketErrorImpl implements SocketError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return socketError(this);
   }
@@ -3949,6 +4906,13 @@ class _$SocketErrorImpl implements SocketError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return socketError?.call(this);
   }
@@ -3978,6 +4942,13 @@ class _$SocketErrorImpl implements SocketError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (socketError != null) {
@@ -4033,7 +5004,7 @@ class _$TimeoutErrorImpl implements TimeoutError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -4051,9 +5022,21 @@ class _$TimeoutErrorImpl implements TimeoutError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
     return timeoutError();
   }
@@ -4062,7 +5045,7 @@ class _$TimeoutErrorImpl implements TimeoutError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -4079,9 +5062,18 @@ class _$TimeoutErrorImpl implements TimeoutError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
     return timeoutError?.call();
   }
@@ -4090,7 +5082,7 @@ class _$TimeoutErrorImpl implements TimeoutError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -4107,9 +5099,18 @@ class _$TimeoutErrorImpl implements TimeoutError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (timeoutError != null) {
@@ -4144,6 +5145,17 @@ class _$TimeoutErrorImpl implements TimeoutError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return timeoutError(this);
   }
@@ -4173,6 +5185,13 @@ class _$TimeoutErrorImpl implements TimeoutError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return timeoutError?.call(this);
   }
@@ -4202,6 +5221,13 @@ class _$TimeoutErrorImpl implements TimeoutError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (timeoutError != null) {
@@ -4220,6 +5246,8 @@ abstract class _$$UnauthorizedErrorImplCopyWith<$Res> {
   factory _$$UnauthorizedErrorImplCopyWith(_$UnauthorizedErrorImpl value,
           $Res Function(_$UnauthorizedErrorImpl) then) =
       __$$UnauthorizedErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -4232,32 +5260,58 @@ class __$$UnauthorizedErrorImplCopyWithImpl<$Res>
 
   /// Create a copy of AppErrors
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$UnauthorizedErrorImpl(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$UnauthorizedErrorImpl implements UnauthorizedError {
-  const _$UnauthorizedErrorImpl();
+  const _$UnauthorizedErrorImpl({this.message});
+
+  @override
+  final String? message;
 
   @override
   String toString() {
-    return 'AppErrors.unauthorizedError()';
+    return 'AppErrors.unauthorizedError(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UnauthorizedErrorImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$UnauthorizedErrorImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UnauthorizedErrorImplCopyWith<_$UnauthorizedErrorImpl> get copyWith =>
+      __$$UnauthorizedErrorImplCopyWithImpl<_$UnauthorizedErrorImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -4275,18 +5329,30 @@ class _$UnauthorizedErrorImpl implements UnauthorizedError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
-    return unauthorizedError();
+    return unauthorizedError(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -4303,18 +5369,27 @@ class _$UnauthorizedErrorImpl implements UnauthorizedError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
-    return unauthorizedError?.call();
+    return unauthorizedError?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -4331,13 +5406,22 @@ class _$UnauthorizedErrorImpl implements UnauthorizedError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (unauthorizedError != null) {
-      return unauthorizedError();
+      return unauthorizedError(message);
     }
     return orElse();
   }
@@ -4368,6 +5452,17 @@ class _$UnauthorizedErrorImpl implements UnauthorizedError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return unauthorizedError(this);
   }
@@ -4397,6 +5492,13 @@ class _$UnauthorizedErrorImpl implements UnauthorizedError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return unauthorizedError?.call(this);
   }
@@ -4426,6 +5528,13 @@ class _$UnauthorizedErrorImpl implements UnauthorizedError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (unauthorizedError != null) {
@@ -4436,7 +5545,16 @@ class _$UnauthorizedErrorImpl implements UnauthorizedError {
 }
 
 abstract class UnauthorizedError implements AppErrors, HttpError {
-  const factory UnauthorizedError() = _$UnauthorizedErrorImpl;
+  const factory UnauthorizedError({final String? message}) =
+      _$UnauthorizedErrorImpl;
+
+  String? get message;
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UnauthorizedErrorImplCopyWith<_$UnauthorizedErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -4444,6 +5562,8 @@ abstract class _$$UnknownErrorImplCopyWith<$Res> {
   factory _$$UnknownErrorImplCopyWith(
           _$UnknownErrorImpl value, $Res Function(_$UnknownErrorImpl) then) =
       __$$UnknownErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? message});
 }
 
 /// @nodoc
@@ -4456,32 +5576,57 @@ class __$$UnknownErrorImplCopyWithImpl<$Res>
 
   /// Create a copy of AppErrors
   /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+  }) {
+    return _then(_$UnknownErrorImpl(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$UnknownErrorImpl implements UnknownError {
-  const _$UnknownErrorImpl();
+  const _$UnknownErrorImpl({this.message});
+
+  @override
+  final String? message;
 
   @override
   String toString() {
-    return 'AppErrors.unknownError()';
+    return 'AppErrors.unknownError(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$UnknownErrorImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$UnknownErrorImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UnknownErrorImplCopyWith<_$UnknownErrorImpl> get copyWith =>
+      __$$UnknownErrorImplCopyWithImpl<_$UnknownErrorImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -4499,18 +5644,30 @@ class _$UnknownErrorImpl implements UnknownError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
-    return unknownError();
+    return unknownError(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -4527,18 +5684,27 @@ class _$UnknownErrorImpl implements UnknownError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
-    return unknownError?.call();
+    return unknownError?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -4555,13 +5721,22 @@ class _$UnknownErrorImpl implements UnknownError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (unknownError != null) {
-      return unknownError();
+      return unknownError(message);
     }
     return orElse();
   }
@@ -4592,6 +5767,17 @@ class _$UnknownErrorImpl implements UnknownError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return unknownError(this);
   }
@@ -4621,6 +5807,13 @@ class _$UnknownErrorImpl implements UnknownError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return unknownError?.call(this);
   }
@@ -4650,6 +5843,13 @@ class _$UnknownErrorImpl implements UnknownError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (unknownError != null) {
@@ -4660,7 +5860,15 @@ class _$UnknownErrorImpl implements UnknownError {
 }
 
 abstract class UnknownError implements AppErrors, HttpError {
-  const factory UnknownError() = _$UnknownErrorImpl;
+  const factory UnknownError({final String? message}) = _$UnknownErrorImpl;
+
+  String? get message;
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UnknownErrorImplCopyWith<_$UnknownErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -4705,7 +5913,7 @@ class _$GuestErrorImpl implements GuestError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() connectionError,
-    required TResult Function() internalServerError,
+    required TResult Function(String? message) internalServerError,
     required TResult Function(
             int errorCode, String? message, ErrorCodeType type)
         internalServerWithDataError,
@@ -4723,9 +5931,21 @@ class _$GuestErrorImpl implements GuestError {
     required TResult Function() screenNotImplementedError,
     required TResult Function() socketError,
     required TResult Function() timeoutError,
-    required TResult Function() unauthorizedError,
-    required TResult Function() unknownError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
     required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
   }) {
     return guestError();
   }
@@ -4734,7 +5954,7 @@ class _$GuestErrorImpl implements GuestError {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? connectionError,
-    TResult? Function()? internalServerError,
+    TResult? Function(String? message)? internalServerError,
     TResult? Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult? Function()? accountNotVerifiedError,
@@ -4751,9 +5971,18 @@ class _$GuestErrorImpl implements GuestError {
     TResult? Function()? screenNotImplementedError,
     TResult? Function()? socketError,
     TResult? Function()? timeoutError,
-    TResult? Function()? unauthorizedError,
-    TResult? Function()? unknownError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
     TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
   }) {
     return guestError?.call();
   }
@@ -4762,7 +5991,7 @@ class _$GuestErrorImpl implements GuestError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? connectionError,
-    TResult Function()? internalServerError,
+    TResult Function(String? message)? internalServerError,
     TResult Function(int errorCode, String? message, ErrorCodeType type)?
         internalServerWithDataError,
     TResult Function()? accountNotVerifiedError,
@@ -4779,9 +6008,18 @@ class _$GuestErrorImpl implements GuestError {
     TResult Function()? screenNotImplementedError,
     TResult Function()? socketError,
     TResult Function()? timeoutError,
-    TResult Function()? unauthorizedError,
-    TResult Function()? unknownError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
     TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
     required TResult orElse(),
   }) {
     if (guestError != null) {
@@ -4816,6 +6054,17 @@ class _$GuestErrorImpl implements GuestError {
     required TResult Function(UnauthorizedError value) unauthorizedError,
     required TResult Function(UnknownError value) unknownError,
     required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
   }) {
     return guestError(this);
   }
@@ -4845,6 +6094,13 @@ class _$GuestErrorImpl implements GuestError {
     TResult? Function(UnauthorizedError value)? unauthorizedError,
     TResult? Function(UnknownError value)? unknownError,
     TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
   }) {
     return guestError?.call(this);
   }
@@ -4874,6 +6130,13 @@ class _$GuestErrorImpl implements GuestError {
     TResult Function(UnauthorizedError value)? unauthorizedError,
     TResult Function(UnknownError value)? unknownError,
     TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
     required TResult orElse(),
   }) {
     if (guestError != null) {
@@ -4885,4 +6148,2290 @@ class _$GuestErrorImpl implements GuestError {
 
 abstract class GuestError implements AppErrors {
   const factory GuestError() = _$GuestErrorImpl;
+}
+
+/// @nodoc
+abstract class _$$BranchNotSelectedErrorImplCopyWith<$Res> {
+  factory _$$BranchNotSelectedErrorImplCopyWith(
+          _$BranchNotSelectedErrorImpl value,
+          $Res Function(_$BranchNotSelectedErrorImpl) then) =
+      __$$BranchNotSelectedErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message, List<Map<String, dynamic>> branches});
+}
+
+/// @nodoc
+class __$$BranchNotSelectedErrorImplCopyWithImpl<$Res>
+    extends _$AppErrorsCopyWithImpl<$Res, _$BranchNotSelectedErrorImpl>
+    implements _$$BranchNotSelectedErrorImplCopyWith<$Res> {
+  __$$BranchNotSelectedErrorImplCopyWithImpl(
+      _$BranchNotSelectedErrorImpl _value,
+      $Res Function(_$BranchNotSelectedErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+    Object? branches = null,
+  }) {
+    return _then(_$BranchNotSelectedErrorImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      branches: null == branches
+          ? _value._branches
+          : branches // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$BranchNotSelectedErrorImpl implements BranchNotSelectedError {
+  const _$BranchNotSelectedErrorImpl(
+      {this.message = "", final List<Map<String, dynamic>> branches = const []})
+      : _branches = branches;
+
+  @override
+  @JsonKey()
+  final String message;
+  final List<Map<String, dynamic>> _branches;
+  @override
+  @JsonKey()
+  List<Map<String, dynamic>> get branches {
+    if (_branches is EqualUnmodifiableListView) return _branches;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_branches);
+  }
+
+  @override
+  String toString() {
+    return 'AppErrors.branchNotSelectedError(message: $message, branches: $branches)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$BranchNotSelectedErrorImpl &&
+            (identical(other.message, message) || other.message == message) &&
+            const DeepCollectionEquality().equals(other._branches, _branches));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, message, const DeepCollectionEquality().hash(_branches));
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$BranchNotSelectedErrorImplCopyWith<_$BranchNotSelectedErrorImpl>
+      get copyWith => __$$BranchNotSelectedErrorImplCopyWithImpl<
+          _$BranchNotSelectedErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() connectionError,
+    required TResult Function(String? message) internalServerError,
+    required TResult Function(
+            int errorCode, String? message, ErrorCodeType type)
+        internalServerWithDataError,
+    required TResult Function() accountNotVerifiedError,
+    required TResult Function(String message) badRequestError,
+    required TResult Function(String? message) cancelError,
+    required TResult Function() conflictError,
+    required TResult Function(String message) customError,
+    required TResult Function() forbiddenError,
+    required TResult Function() formatError,
+    required TResult Function() loginRequiredError,
+    required TResult Function() netError,
+    required TResult Function(String requestedUrlPath) notFoundError,
+    required TResult Function() responseError,
+    required TResult Function() screenNotImplementedError,
+    required TResult Function() socketError,
+    required TResult Function() timeoutError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
+    required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
+  }) {
+    return branchNotSelectedError(message, branches);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? connectionError,
+    TResult? Function(String? message)? internalServerError,
+    TResult? Function(int errorCode, String? message, ErrorCodeType type)?
+        internalServerWithDataError,
+    TResult? Function()? accountNotVerifiedError,
+    TResult? Function(String message)? badRequestError,
+    TResult? Function(String? message)? cancelError,
+    TResult? Function()? conflictError,
+    TResult? Function(String message)? customError,
+    TResult? Function()? forbiddenError,
+    TResult? Function()? formatError,
+    TResult? Function()? loginRequiredError,
+    TResult? Function()? netError,
+    TResult? Function(String requestedUrlPath)? notFoundError,
+    TResult? Function()? responseError,
+    TResult? Function()? screenNotImplementedError,
+    TResult? Function()? socketError,
+    TResult? Function()? timeoutError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
+    TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
+  }) {
+    return branchNotSelectedError?.call(message, branches);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? connectionError,
+    TResult Function(String? message)? internalServerError,
+    TResult Function(int errorCode, String? message, ErrorCodeType type)?
+        internalServerWithDataError,
+    TResult Function()? accountNotVerifiedError,
+    TResult Function(String message)? badRequestError,
+    TResult Function(String? message)? cancelError,
+    TResult Function()? conflictError,
+    TResult Function(String message)? customError,
+    TResult Function()? forbiddenError,
+    TResult Function()? formatError,
+    TResult Function()? loginRequiredError,
+    TResult Function()? netError,
+    TResult Function(String requestedUrlPath)? notFoundError,
+    TResult Function()? responseError,
+    TResult Function()? screenNotImplementedError,
+    TResult Function()? socketError,
+    TResult Function()? timeoutError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
+    TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
+    required TResult orElse(),
+  }) {
+    if (branchNotSelectedError != null) {
+      return branchNotSelectedError(message, branches);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ConnectionError value) connectionError,
+    required TResult Function(InternalServerError value) internalServerError,
+    required TResult Function(InternalServerWithDataError value)
+        internalServerWithDataError,
+    required TResult Function(AccountNotVerifiedError value)
+        accountNotVerifiedError,
+    required TResult Function(BadRequestError value) badRequestError,
+    required TResult Function(CancelError value) cancelError,
+    required TResult Function(ConflictError value) conflictError,
+    required TResult Function(CustomError value) customError,
+    required TResult Function(ForbiddenError value) forbiddenError,
+    required TResult Function(FormatError value) formatError,
+    required TResult Function(LoginRequiredError value) loginRequiredError,
+    required TResult Function(NetError value) netError,
+    required TResult Function(NotFoundError value) notFoundError,
+    required TResult Function(ResponseError value) responseError,
+    required TResult Function(ScreenNotImplementedError value)
+        screenNotImplementedError,
+    required TResult Function(SocketError value) socketError,
+    required TResult Function(TimeoutError value) timeoutError,
+    required TResult Function(UnauthorizedError value) unauthorizedError,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
+  }) {
+    return branchNotSelectedError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ConnectionError value)? connectionError,
+    TResult? Function(InternalServerError value)? internalServerError,
+    TResult? Function(InternalServerWithDataError value)?
+        internalServerWithDataError,
+    TResult? Function(AccountNotVerifiedError value)? accountNotVerifiedError,
+    TResult? Function(BadRequestError value)? badRequestError,
+    TResult? Function(CancelError value)? cancelError,
+    TResult? Function(ConflictError value)? conflictError,
+    TResult? Function(CustomError value)? customError,
+    TResult? Function(ForbiddenError value)? forbiddenError,
+    TResult? Function(FormatError value)? formatError,
+    TResult? Function(LoginRequiredError value)? loginRequiredError,
+    TResult? Function(NetError value)? netError,
+    TResult? Function(NotFoundError value)? notFoundError,
+    TResult? Function(ResponseError value)? responseError,
+    TResult? Function(ScreenNotImplementedError value)?
+        screenNotImplementedError,
+    TResult? Function(SocketError value)? socketError,
+    TResult? Function(TimeoutError value)? timeoutError,
+    TResult? Function(UnauthorizedError value)? unauthorizedError,
+    TResult? Function(UnknownError value)? unknownError,
+    TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
+  }) {
+    return branchNotSelectedError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ConnectionError value)? connectionError,
+    TResult Function(InternalServerError value)? internalServerError,
+    TResult Function(InternalServerWithDataError value)?
+        internalServerWithDataError,
+    TResult Function(AccountNotVerifiedError value)? accountNotVerifiedError,
+    TResult Function(BadRequestError value)? badRequestError,
+    TResult Function(CancelError value)? cancelError,
+    TResult Function(ConflictError value)? conflictError,
+    TResult Function(CustomError value)? customError,
+    TResult Function(ForbiddenError value)? forbiddenError,
+    TResult Function(FormatError value)? formatError,
+    TResult Function(LoginRequiredError value)? loginRequiredError,
+    TResult Function(NetError value)? netError,
+    TResult Function(NotFoundError value)? notFoundError,
+    TResult Function(ResponseError value)? responseError,
+    TResult Function(ScreenNotImplementedError value)?
+        screenNotImplementedError,
+    TResult Function(SocketError value)? socketError,
+    TResult Function(TimeoutError value)? timeoutError,
+    TResult Function(UnauthorizedError value)? unauthorizedError,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
+    required TResult orElse(),
+  }) {
+    if (branchNotSelectedError != null) {
+      return branchNotSelectedError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class BranchNotSelectedError implements AppErrors, HttpError {
+  const factory BranchNotSelectedError(
+          {final String message, final List<Map<String, dynamic>> branches}) =
+      _$BranchNotSelectedErrorImpl;
+
+  String get message;
+  List<Map<String, dynamic>> get branches;
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$BranchNotSelectedErrorImplCopyWith<_$BranchNotSelectedErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UnprocessableEntityErrorImplCopyWith<$Res> {
+  factory _$$UnprocessableEntityErrorImplCopyWith(
+          _$UnprocessableEntityErrorImpl value,
+          $Res Function(_$UnprocessableEntityErrorImpl) then) =
+      __$$UnprocessableEntityErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Map<String, List<String>> errors, String message});
+}
+
+/// @nodoc
+class __$$UnprocessableEntityErrorImplCopyWithImpl<$Res>
+    extends _$AppErrorsCopyWithImpl<$Res, _$UnprocessableEntityErrorImpl>
+    implements _$$UnprocessableEntityErrorImplCopyWith<$Res> {
+  __$$UnprocessableEntityErrorImplCopyWithImpl(
+      _$UnprocessableEntityErrorImpl _value,
+      $Res Function(_$UnprocessableEntityErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errors = null,
+    Object? message = null,
+  }) {
+    return _then(_$UnprocessableEntityErrorImpl(
+      errors: null == errors
+          ? _value._errors
+          : errors // ignore: cast_nullable_to_non_nullable
+              as Map<String, List<String>>,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UnprocessableEntityErrorImpl implements UnprocessableEntityError {
+  const _$UnprocessableEntityErrorImpl(
+      {final Map<String, List<String>> errors = const {}, this.message = ""})
+      : _errors = errors;
+
+  final Map<String, List<String>> _errors;
+  @override
+  @JsonKey()
+  Map<String, List<String>> get errors {
+    if (_errors is EqualUnmodifiableMapView) return _errors;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_errors);
+  }
+
+  @override
+  @JsonKey()
+  final String message;
+
+  @override
+  String toString() {
+    return 'AppErrors.unprocessableEntityError(errors: $errors, message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UnprocessableEntityErrorImpl &&
+            const DeepCollectionEquality().equals(other._errors, _errors) &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_errors), message);
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UnprocessableEntityErrorImplCopyWith<_$UnprocessableEntityErrorImpl>
+      get copyWith => __$$UnprocessableEntityErrorImplCopyWithImpl<
+          _$UnprocessableEntityErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() connectionError,
+    required TResult Function(String? message) internalServerError,
+    required TResult Function(
+            int errorCode, String? message, ErrorCodeType type)
+        internalServerWithDataError,
+    required TResult Function() accountNotVerifiedError,
+    required TResult Function(String message) badRequestError,
+    required TResult Function(String? message) cancelError,
+    required TResult Function() conflictError,
+    required TResult Function(String message) customError,
+    required TResult Function() forbiddenError,
+    required TResult Function() formatError,
+    required TResult Function() loginRequiredError,
+    required TResult Function() netError,
+    required TResult Function(String requestedUrlPath) notFoundError,
+    required TResult Function() responseError,
+    required TResult Function() screenNotImplementedError,
+    required TResult Function() socketError,
+    required TResult Function() timeoutError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
+    required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
+  }) {
+    return unprocessableEntityError(errors, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? connectionError,
+    TResult? Function(String? message)? internalServerError,
+    TResult? Function(int errorCode, String? message, ErrorCodeType type)?
+        internalServerWithDataError,
+    TResult? Function()? accountNotVerifiedError,
+    TResult? Function(String message)? badRequestError,
+    TResult? Function(String? message)? cancelError,
+    TResult? Function()? conflictError,
+    TResult? Function(String message)? customError,
+    TResult? Function()? forbiddenError,
+    TResult? Function()? formatError,
+    TResult? Function()? loginRequiredError,
+    TResult? Function()? netError,
+    TResult? Function(String requestedUrlPath)? notFoundError,
+    TResult? Function()? responseError,
+    TResult? Function()? screenNotImplementedError,
+    TResult? Function()? socketError,
+    TResult? Function()? timeoutError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
+    TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
+  }) {
+    return unprocessableEntityError?.call(errors, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? connectionError,
+    TResult Function(String? message)? internalServerError,
+    TResult Function(int errorCode, String? message, ErrorCodeType type)?
+        internalServerWithDataError,
+    TResult Function()? accountNotVerifiedError,
+    TResult Function(String message)? badRequestError,
+    TResult Function(String? message)? cancelError,
+    TResult Function()? conflictError,
+    TResult Function(String message)? customError,
+    TResult Function()? forbiddenError,
+    TResult Function()? formatError,
+    TResult Function()? loginRequiredError,
+    TResult Function()? netError,
+    TResult Function(String requestedUrlPath)? notFoundError,
+    TResult Function()? responseError,
+    TResult Function()? screenNotImplementedError,
+    TResult Function()? socketError,
+    TResult Function()? timeoutError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
+    TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
+    required TResult orElse(),
+  }) {
+    if (unprocessableEntityError != null) {
+      return unprocessableEntityError(errors, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ConnectionError value) connectionError,
+    required TResult Function(InternalServerError value) internalServerError,
+    required TResult Function(InternalServerWithDataError value)
+        internalServerWithDataError,
+    required TResult Function(AccountNotVerifiedError value)
+        accountNotVerifiedError,
+    required TResult Function(BadRequestError value) badRequestError,
+    required TResult Function(CancelError value) cancelError,
+    required TResult Function(ConflictError value) conflictError,
+    required TResult Function(CustomError value) customError,
+    required TResult Function(ForbiddenError value) forbiddenError,
+    required TResult Function(FormatError value) formatError,
+    required TResult Function(LoginRequiredError value) loginRequiredError,
+    required TResult Function(NetError value) netError,
+    required TResult Function(NotFoundError value) notFoundError,
+    required TResult Function(ResponseError value) responseError,
+    required TResult Function(ScreenNotImplementedError value)
+        screenNotImplementedError,
+    required TResult Function(SocketError value) socketError,
+    required TResult Function(TimeoutError value) timeoutError,
+    required TResult Function(UnauthorizedError value) unauthorizedError,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
+  }) {
+    return unprocessableEntityError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ConnectionError value)? connectionError,
+    TResult? Function(InternalServerError value)? internalServerError,
+    TResult? Function(InternalServerWithDataError value)?
+        internalServerWithDataError,
+    TResult? Function(AccountNotVerifiedError value)? accountNotVerifiedError,
+    TResult? Function(BadRequestError value)? badRequestError,
+    TResult? Function(CancelError value)? cancelError,
+    TResult? Function(ConflictError value)? conflictError,
+    TResult? Function(CustomError value)? customError,
+    TResult? Function(ForbiddenError value)? forbiddenError,
+    TResult? Function(FormatError value)? formatError,
+    TResult? Function(LoginRequiredError value)? loginRequiredError,
+    TResult? Function(NetError value)? netError,
+    TResult? Function(NotFoundError value)? notFoundError,
+    TResult? Function(ResponseError value)? responseError,
+    TResult? Function(ScreenNotImplementedError value)?
+        screenNotImplementedError,
+    TResult? Function(SocketError value)? socketError,
+    TResult? Function(TimeoutError value)? timeoutError,
+    TResult? Function(UnauthorizedError value)? unauthorizedError,
+    TResult? Function(UnknownError value)? unknownError,
+    TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
+  }) {
+    return unprocessableEntityError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ConnectionError value)? connectionError,
+    TResult Function(InternalServerError value)? internalServerError,
+    TResult Function(InternalServerWithDataError value)?
+        internalServerWithDataError,
+    TResult Function(AccountNotVerifiedError value)? accountNotVerifiedError,
+    TResult Function(BadRequestError value)? badRequestError,
+    TResult Function(CancelError value)? cancelError,
+    TResult Function(ConflictError value)? conflictError,
+    TResult Function(CustomError value)? customError,
+    TResult Function(ForbiddenError value)? forbiddenError,
+    TResult Function(FormatError value)? formatError,
+    TResult Function(LoginRequiredError value)? loginRequiredError,
+    TResult Function(NetError value)? netError,
+    TResult Function(NotFoundError value)? notFoundError,
+    TResult Function(ResponseError value)? responseError,
+    TResult Function(ScreenNotImplementedError value)?
+        screenNotImplementedError,
+    TResult Function(SocketError value)? socketError,
+    TResult Function(TimeoutError value)? timeoutError,
+    TResult Function(UnauthorizedError value)? unauthorizedError,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
+    required TResult orElse(),
+  }) {
+    if (unprocessableEntityError != null) {
+      return unprocessableEntityError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UnprocessableEntityError implements AppErrors, HttpError {
+  const factory UnprocessableEntityError(
+      {final Map<String, List<String>> errors,
+      final String message}) = _$UnprocessableEntityErrorImpl;
+
+  Map<String, List<String>> get errors;
+  String get message;
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$UnprocessableEntityErrorImplCopyWith<_$UnprocessableEntityErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OutdatedVersionErrorImplCopyWith<$Res> {
+  factory _$$OutdatedVersionErrorImplCopyWith(_$OutdatedVersionErrorImpl value,
+          $Res Function(_$OutdatedVersionErrorImpl) then) =
+      __$$OutdatedVersionErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$OutdatedVersionErrorImplCopyWithImpl<$Res>
+    extends _$AppErrorsCopyWithImpl<$Res, _$OutdatedVersionErrorImpl>
+    implements _$$OutdatedVersionErrorImplCopyWith<$Res> {
+  __$$OutdatedVersionErrorImplCopyWithImpl(_$OutdatedVersionErrorImpl _value,
+      $Res Function(_$OutdatedVersionErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$OutdatedVersionErrorImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OutdatedVersionErrorImpl implements OutdatedVersionError {
+  const _$OutdatedVersionErrorImpl({this.message = ""});
+
+  @override
+  @JsonKey()
+  final String message;
+
+  @override
+  String toString() {
+    return 'AppErrors.outdatedVersionError(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OutdatedVersionErrorImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OutdatedVersionErrorImplCopyWith<_$OutdatedVersionErrorImpl>
+      get copyWith =>
+          __$$OutdatedVersionErrorImplCopyWithImpl<_$OutdatedVersionErrorImpl>(
+              this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() connectionError,
+    required TResult Function(String? message) internalServerError,
+    required TResult Function(
+            int errorCode, String? message, ErrorCodeType type)
+        internalServerWithDataError,
+    required TResult Function() accountNotVerifiedError,
+    required TResult Function(String message) badRequestError,
+    required TResult Function(String? message) cancelError,
+    required TResult Function() conflictError,
+    required TResult Function(String message) customError,
+    required TResult Function() forbiddenError,
+    required TResult Function() formatError,
+    required TResult Function() loginRequiredError,
+    required TResult Function() netError,
+    required TResult Function(String requestedUrlPath) notFoundError,
+    required TResult Function() responseError,
+    required TResult Function() screenNotImplementedError,
+    required TResult Function() socketError,
+    required TResult Function() timeoutError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
+    required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
+  }) {
+    return outdatedVersionError(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? connectionError,
+    TResult? Function(String? message)? internalServerError,
+    TResult? Function(int errorCode, String? message, ErrorCodeType type)?
+        internalServerWithDataError,
+    TResult? Function()? accountNotVerifiedError,
+    TResult? Function(String message)? badRequestError,
+    TResult? Function(String? message)? cancelError,
+    TResult? Function()? conflictError,
+    TResult? Function(String message)? customError,
+    TResult? Function()? forbiddenError,
+    TResult? Function()? formatError,
+    TResult? Function()? loginRequiredError,
+    TResult? Function()? netError,
+    TResult? Function(String requestedUrlPath)? notFoundError,
+    TResult? Function()? responseError,
+    TResult? Function()? screenNotImplementedError,
+    TResult? Function()? socketError,
+    TResult? Function()? timeoutError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
+    TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
+  }) {
+    return outdatedVersionError?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? connectionError,
+    TResult Function(String? message)? internalServerError,
+    TResult Function(int errorCode, String? message, ErrorCodeType type)?
+        internalServerWithDataError,
+    TResult Function()? accountNotVerifiedError,
+    TResult Function(String message)? badRequestError,
+    TResult Function(String? message)? cancelError,
+    TResult Function()? conflictError,
+    TResult Function(String message)? customError,
+    TResult Function()? forbiddenError,
+    TResult Function()? formatError,
+    TResult Function()? loginRequiredError,
+    TResult Function()? netError,
+    TResult Function(String requestedUrlPath)? notFoundError,
+    TResult Function()? responseError,
+    TResult Function()? screenNotImplementedError,
+    TResult Function()? socketError,
+    TResult Function()? timeoutError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
+    TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
+    required TResult orElse(),
+  }) {
+    if (outdatedVersionError != null) {
+      return outdatedVersionError(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ConnectionError value) connectionError,
+    required TResult Function(InternalServerError value) internalServerError,
+    required TResult Function(InternalServerWithDataError value)
+        internalServerWithDataError,
+    required TResult Function(AccountNotVerifiedError value)
+        accountNotVerifiedError,
+    required TResult Function(BadRequestError value) badRequestError,
+    required TResult Function(CancelError value) cancelError,
+    required TResult Function(ConflictError value) conflictError,
+    required TResult Function(CustomError value) customError,
+    required TResult Function(ForbiddenError value) forbiddenError,
+    required TResult Function(FormatError value) formatError,
+    required TResult Function(LoginRequiredError value) loginRequiredError,
+    required TResult Function(NetError value) netError,
+    required TResult Function(NotFoundError value) notFoundError,
+    required TResult Function(ResponseError value) responseError,
+    required TResult Function(ScreenNotImplementedError value)
+        screenNotImplementedError,
+    required TResult Function(SocketError value) socketError,
+    required TResult Function(TimeoutError value) timeoutError,
+    required TResult Function(UnauthorizedError value) unauthorizedError,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
+  }) {
+    return outdatedVersionError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ConnectionError value)? connectionError,
+    TResult? Function(InternalServerError value)? internalServerError,
+    TResult? Function(InternalServerWithDataError value)?
+        internalServerWithDataError,
+    TResult? Function(AccountNotVerifiedError value)? accountNotVerifiedError,
+    TResult? Function(BadRequestError value)? badRequestError,
+    TResult? Function(CancelError value)? cancelError,
+    TResult? Function(ConflictError value)? conflictError,
+    TResult? Function(CustomError value)? customError,
+    TResult? Function(ForbiddenError value)? forbiddenError,
+    TResult? Function(FormatError value)? formatError,
+    TResult? Function(LoginRequiredError value)? loginRequiredError,
+    TResult? Function(NetError value)? netError,
+    TResult? Function(NotFoundError value)? notFoundError,
+    TResult? Function(ResponseError value)? responseError,
+    TResult? Function(ScreenNotImplementedError value)?
+        screenNotImplementedError,
+    TResult? Function(SocketError value)? socketError,
+    TResult? Function(TimeoutError value)? timeoutError,
+    TResult? Function(UnauthorizedError value)? unauthorizedError,
+    TResult? Function(UnknownError value)? unknownError,
+    TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
+  }) {
+    return outdatedVersionError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ConnectionError value)? connectionError,
+    TResult Function(InternalServerError value)? internalServerError,
+    TResult Function(InternalServerWithDataError value)?
+        internalServerWithDataError,
+    TResult Function(AccountNotVerifiedError value)? accountNotVerifiedError,
+    TResult Function(BadRequestError value)? badRequestError,
+    TResult Function(CancelError value)? cancelError,
+    TResult Function(ConflictError value)? conflictError,
+    TResult Function(CustomError value)? customError,
+    TResult Function(ForbiddenError value)? forbiddenError,
+    TResult Function(FormatError value)? formatError,
+    TResult Function(LoginRequiredError value)? loginRequiredError,
+    TResult Function(NetError value)? netError,
+    TResult Function(NotFoundError value)? notFoundError,
+    TResult Function(ResponseError value)? responseError,
+    TResult Function(ScreenNotImplementedError value)?
+        screenNotImplementedError,
+    TResult Function(SocketError value)? socketError,
+    TResult Function(TimeoutError value)? timeoutError,
+    TResult Function(UnauthorizedError value)? unauthorizedError,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
+    required TResult orElse(),
+  }) {
+    if (outdatedVersionError != null) {
+      return outdatedVersionError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OutdatedVersionError implements AppErrors, HttpError {
+  const factory OutdatedVersionError({final String message}) =
+      _$OutdatedVersionErrorImpl;
+
+  String get message;
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$OutdatedVersionErrorImplCopyWith<_$OutdatedVersionErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SuspendedAccountErrorImplCopyWith<$Res> {
+  factory _$$SuspendedAccountErrorImplCopyWith(
+          _$SuspendedAccountErrorImpl value,
+          $Res Function(_$SuspendedAccountErrorImpl) then) =
+      __$$SuspendedAccountErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$SuspendedAccountErrorImplCopyWithImpl<$Res>
+    extends _$AppErrorsCopyWithImpl<$Res, _$SuspendedAccountErrorImpl>
+    implements _$$SuspendedAccountErrorImplCopyWith<$Res> {
+  __$$SuspendedAccountErrorImplCopyWithImpl(_$SuspendedAccountErrorImpl _value,
+      $Res Function(_$SuspendedAccountErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$SuspendedAccountErrorImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SuspendedAccountErrorImpl implements SuspendedAccountError {
+  const _$SuspendedAccountErrorImpl({this.message = ""});
+
+  @override
+  @JsonKey()
+  final String message;
+
+  @override
+  String toString() {
+    return 'AppErrors.suspendedAccountError(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SuspendedAccountErrorImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuspendedAccountErrorImplCopyWith<_$SuspendedAccountErrorImpl>
+      get copyWith => __$$SuspendedAccountErrorImplCopyWithImpl<
+          _$SuspendedAccountErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() connectionError,
+    required TResult Function(String? message) internalServerError,
+    required TResult Function(
+            int errorCode, String? message, ErrorCodeType type)
+        internalServerWithDataError,
+    required TResult Function() accountNotVerifiedError,
+    required TResult Function(String message) badRequestError,
+    required TResult Function(String? message) cancelError,
+    required TResult Function() conflictError,
+    required TResult Function(String message) customError,
+    required TResult Function() forbiddenError,
+    required TResult Function() formatError,
+    required TResult Function() loginRequiredError,
+    required TResult Function() netError,
+    required TResult Function(String requestedUrlPath) notFoundError,
+    required TResult Function() responseError,
+    required TResult Function() screenNotImplementedError,
+    required TResult Function() socketError,
+    required TResult Function() timeoutError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
+    required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
+  }) {
+    return suspendedAccountError(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? connectionError,
+    TResult? Function(String? message)? internalServerError,
+    TResult? Function(int errorCode, String? message, ErrorCodeType type)?
+        internalServerWithDataError,
+    TResult? Function()? accountNotVerifiedError,
+    TResult? Function(String message)? badRequestError,
+    TResult? Function(String? message)? cancelError,
+    TResult? Function()? conflictError,
+    TResult? Function(String message)? customError,
+    TResult? Function()? forbiddenError,
+    TResult? Function()? formatError,
+    TResult? Function()? loginRequiredError,
+    TResult? Function()? netError,
+    TResult? Function(String requestedUrlPath)? notFoundError,
+    TResult? Function()? responseError,
+    TResult? Function()? screenNotImplementedError,
+    TResult? Function()? socketError,
+    TResult? Function()? timeoutError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
+    TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
+  }) {
+    return suspendedAccountError?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? connectionError,
+    TResult Function(String? message)? internalServerError,
+    TResult Function(int errorCode, String? message, ErrorCodeType type)?
+        internalServerWithDataError,
+    TResult Function()? accountNotVerifiedError,
+    TResult Function(String message)? badRequestError,
+    TResult Function(String? message)? cancelError,
+    TResult Function()? conflictError,
+    TResult Function(String message)? customError,
+    TResult Function()? forbiddenError,
+    TResult Function()? formatError,
+    TResult Function()? loginRequiredError,
+    TResult Function()? netError,
+    TResult Function(String requestedUrlPath)? notFoundError,
+    TResult Function()? responseError,
+    TResult Function()? screenNotImplementedError,
+    TResult Function()? socketError,
+    TResult Function()? timeoutError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
+    TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
+    required TResult orElse(),
+  }) {
+    if (suspendedAccountError != null) {
+      return suspendedAccountError(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ConnectionError value) connectionError,
+    required TResult Function(InternalServerError value) internalServerError,
+    required TResult Function(InternalServerWithDataError value)
+        internalServerWithDataError,
+    required TResult Function(AccountNotVerifiedError value)
+        accountNotVerifiedError,
+    required TResult Function(BadRequestError value) badRequestError,
+    required TResult Function(CancelError value) cancelError,
+    required TResult Function(ConflictError value) conflictError,
+    required TResult Function(CustomError value) customError,
+    required TResult Function(ForbiddenError value) forbiddenError,
+    required TResult Function(FormatError value) formatError,
+    required TResult Function(LoginRequiredError value) loginRequiredError,
+    required TResult Function(NetError value) netError,
+    required TResult Function(NotFoundError value) notFoundError,
+    required TResult Function(ResponseError value) responseError,
+    required TResult Function(ScreenNotImplementedError value)
+        screenNotImplementedError,
+    required TResult Function(SocketError value) socketError,
+    required TResult Function(TimeoutError value) timeoutError,
+    required TResult Function(UnauthorizedError value) unauthorizedError,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
+  }) {
+    return suspendedAccountError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ConnectionError value)? connectionError,
+    TResult? Function(InternalServerError value)? internalServerError,
+    TResult? Function(InternalServerWithDataError value)?
+        internalServerWithDataError,
+    TResult? Function(AccountNotVerifiedError value)? accountNotVerifiedError,
+    TResult? Function(BadRequestError value)? badRequestError,
+    TResult? Function(CancelError value)? cancelError,
+    TResult? Function(ConflictError value)? conflictError,
+    TResult? Function(CustomError value)? customError,
+    TResult? Function(ForbiddenError value)? forbiddenError,
+    TResult? Function(FormatError value)? formatError,
+    TResult? Function(LoginRequiredError value)? loginRequiredError,
+    TResult? Function(NetError value)? netError,
+    TResult? Function(NotFoundError value)? notFoundError,
+    TResult? Function(ResponseError value)? responseError,
+    TResult? Function(ScreenNotImplementedError value)?
+        screenNotImplementedError,
+    TResult? Function(SocketError value)? socketError,
+    TResult? Function(TimeoutError value)? timeoutError,
+    TResult? Function(UnauthorizedError value)? unauthorizedError,
+    TResult? Function(UnknownError value)? unknownError,
+    TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
+  }) {
+    return suspendedAccountError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ConnectionError value)? connectionError,
+    TResult Function(InternalServerError value)? internalServerError,
+    TResult Function(InternalServerWithDataError value)?
+        internalServerWithDataError,
+    TResult Function(AccountNotVerifiedError value)? accountNotVerifiedError,
+    TResult Function(BadRequestError value)? badRequestError,
+    TResult Function(CancelError value)? cancelError,
+    TResult Function(ConflictError value)? conflictError,
+    TResult Function(CustomError value)? customError,
+    TResult Function(ForbiddenError value)? forbiddenError,
+    TResult Function(FormatError value)? formatError,
+    TResult Function(LoginRequiredError value)? loginRequiredError,
+    TResult Function(NetError value)? netError,
+    TResult Function(NotFoundError value)? notFoundError,
+    TResult Function(ResponseError value)? responseError,
+    TResult Function(ScreenNotImplementedError value)?
+        screenNotImplementedError,
+    TResult Function(SocketError value)? socketError,
+    TResult Function(TimeoutError value)? timeoutError,
+    TResult Function(UnauthorizedError value)? unauthorizedError,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
+    required TResult orElse(),
+  }) {
+    if (suspendedAccountError != null) {
+      return suspendedAccountError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SuspendedAccountError implements AppErrors, HttpError {
+  const factory SuspendedAccountError({final String message}) =
+      _$SuspendedAccountErrorImpl;
+
+  String get message;
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SuspendedAccountErrorImplCopyWith<_$SuspendedAccountErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DeactivatedAccountErrorImplCopyWith<$Res> {
+  factory _$$DeactivatedAccountErrorImplCopyWith(
+          _$DeactivatedAccountErrorImpl value,
+          $Res Function(_$DeactivatedAccountErrorImpl) then) =
+      __$$DeactivatedAccountErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$DeactivatedAccountErrorImplCopyWithImpl<$Res>
+    extends _$AppErrorsCopyWithImpl<$Res, _$DeactivatedAccountErrorImpl>
+    implements _$$DeactivatedAccountErrorImplCopyWith<$Res> {
+  __$$DeactivatedAccountErrorImplCopyWithImpl(
+      _$DeactivatedAccountErrorImpl _value,
+      $Res Function(_$DeactivatedAccountErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$DeactivatedAccountErrorImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DeactivatedAccountErrorImpl implements DeactivatedAccountError {
+  const _$DeactivatedAccountErrorImpl({this.message = ""});
+
+  @override
+  @JsonKey()
+  final String message;
+
+  @override
+  String toString() {
+    return 'AppErrors.deactivatedAccountError(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DeactivatedAccountErrorImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DeactivatedAccountErrorImplCopyWith<_$DeactivatedAccountErrorImpl>
+      get copyWith => __$$DeactivatedAccountErrorImplCopyWithImpl<
+          _$DeactivatedAccountErrorImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() connectionError,
+    required TResult Function(String? message) internalServerError,
+    required TResult Function(
+            int errorCode, String? message, ErrorCodeType type)
+        internalServerWithDataError,
+    required TResult Function() accountNotVerifiedError,
+    required TResult Function(String message) badRequestError,
+    required TResult Function(String? message) cancelError,
+    required TResult Function() conflictError,
+    required TResult Function(String message) customError,
+    required TResult Function() forbiddenError,
+    required TResult Function() formatError,
+    required TResult Function() loginRequiredError,
+    required TResult Function() netError,
+    required TResult Function(String requestedUrlPath) notFoundError,
+    required TResult Function() responseError,
+    required TResult Function() screenNotImplementedError,
+    required TResult Function() socketError,
+    required TResult Function() timeoutError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
+    required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
+  }) {
+    return deactivatedAccountError(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? connectionError,
+    TResult? Function(String? message)? internalServerError,
+    TResult? Function(int errorCode, String? message, ErrorCodeType type)?
+        internalServerWithDataError,
+    TResult? Function()? accountNotVerifiedError,
+    TResult? Function(String message)? badRequestError,
+    TResult? Function(String? message)? cancelError,
+    TResult? Function()? conflictError,
+    TResult? Function(String message)? customError,
+    TResult? Function()? forbiddenError,
+    TResult? Function()? formatError,
+    TResult? Function()? loginRequiredError,
+    TResult? Function()? netError,
+    TResult? Function(String requestedUrlPath)? notFoundError,
+    TResult? Function()? responseError,
+    TResult? Function()? screenNotImplementedError,
+    TResult? Function()? socketError,
+    TResult? Function()? timeoutError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
+    TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
+  }) {
+    return deactivatedAccountError?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? connectionError,
+    TResult Function(String? message)? internalServerError,
+    TResult Function(int errorCode, String? message, ErrorCodeType type)?
+        internalServerWithDataError,
+    TResult Function()? accountNotVerifiedError,
+    TResult Function(String message)? badRequestError,
+    TResult Function(String? message)? cancelError,
+    TResult Function()? conflictError,
+    TResult Function(String message)? customError,
+    TResult Function()? forbiddenError,
+    TResult Function()? formatError,
+    TResult Function()? loginRequiredError,
+    TResult Function()? netError,
+    TResult Function(String requestedUrlPath)? notFoundError,
+    TResult Function()? responseError,
+    TResult Function()? screenNotImplementedError,
+    TResult Function()? socketError,
+    TResult Function()? timeoutError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
+    TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
+    required TResult orElse(),
+  }) {
+    if (deactivatedAccountError != null) {
+      return deactivatedAccountError(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ConnectionError value) connectionError,
+    required TResult Function(InternalServerError value) internalServerError,
+    required TResult Function(InternalServerWithDataError value)
+        internalServerWithDataError,
+    required TResult Function(AccountNotVerifiedError value)
+        accountNotVerifiedError,
+    required TResult Function(BadRequestError value) badRequestError,
+    required TResult Function(CancelError value) cancelError,
+    required TResult Function(ConflictError value) conflictError,
+    required TResult Function(CustomError value) customError,
+    required TResult Function(ForbiddenError value) forbiddenError,
+    required TResult Function(FormatError value) formatError,
+    required TResult Function(LoginRequiredError value) loginRequiredError,
+    required TResult Function(NetError value) netError,
+    required TResult Function(NotFoundError value) notFoundError,
+    required TResult Function(ResponseError value) responseError,
+    required TResult Function(ScreenNotImplementedError value)
+        screenNotImplementedError,
+    required TResult Function(SocketError value) socketError,
+    required TResult Function(TimeoutError value) timeoutError,
+    required TResult Function(UnauthorizedError value) unauthorizedError,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
+  }) {
+    return deactivatedAccountError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ConnectionError value)? connectionError,
+    TResult? Function(InternalServerError value)? internalServerError,
+    TResult? Function(InternalServerWithDataError value)?
+        internalServerWithDataError,
+    TResult? Function(AccountNotVerifiedError value)? accountNotVerifiedError,
+    TResult? Function(BadRequestError value)? badRequestError,
+    TResult? Function(CancelError value)? cancelError,
+    TResult? Function(ConflictError value)? conflictError,
+    TResult? Function(CustomError value)? customError,
+    TResult? Function(ForbiddenError value)? forbiddenError,
+    TResult? Function(FormatError value)? formatError,
+    TResult? Function(LoginRequiredError value)? loginRequiredError,
+    TResult? Function(NetError value)? netError,
+    TResult? Function(NotFoundError value)? notFoundError,
+    TResult? Function(ResponseError value)? responseError,
+    TResult? Function(ScreenNotImplementedError value)?
+        screenNotImplementedError,
+    TResult? Function(SocketError value)? socketError,
+    TResult? Function(TimeoutError value)? timeoutError,
+    TResult? Function(UnauthorizedError value)? unauthorizedError,
+    TResult? Function(UnknownError value)? unknownError,
+    TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
+  }) {
+    return deactivatedAccountError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ConnectionError value)? connectionError,
+    TResult Function(InternalServerError value)? internalServerError,
+    TResult Function(InternalServerWithDataError value)?
+        internalServerWithDataError,
+    TResult Function(AccountNotVerifiedError value)? accountNotVerifiedError,
+    TResult Function(BadRequestError value)? badRequestError,
+    TResult Function(CancelError value)? cancelError,
+    TResult Function(ConflictError value)? conflictError,
+    TResult Function(CustomError value)? customError,
+    TResult Function(ForbiddenError value)? forbiddenError,
+    TResult Function(FormatError value)? formatError,
+    TResult Function(LoginRequiredError value)? loginRequiredError,
+    TResult Function(NetError value)? netError,
+    TResult Function(NotFoundError value)? notFoundError,
+    TResult Function(ResponseError value)? responseError,
+    TResult Function(ScreenNotImplementedError value)?
+        screenNotImplementedError,
+    TResult Function(SocketError value)? socketError,
+    TResult Function(TimeoutError value)? timeoutError,
+    TResult Function(UnauthorizedError value)? unauthorizedError,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
+    required TResult orElse(),
+  }) {
+    if (deactivatedAccountError != null) {
+      return deactivatedAccountError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeactivatedAccountError implements AppErrors, HttpError {
+  const factory DeactivatedAccountError({final String message}) =
+      _$DeactivatedAccountErrorImpl;
+
+  String get message;
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$DeactivatedAccountErrorImplCopyWith<_$DeactivatedAccountErrorImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$CustomHttpErrorImplCopyWith<$Res> {
+  factory _$$CustomHttpErrorImplCopyWith(_$CustomHttpErrorImpl value,
+          $Res Function(_$CustomHttpErrorImpl) then) =
+      __$$CustomHttpErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int responseCode, String? message});
+}
+
+/// @nodoc
+class __$$CustomHttpErrorImplCopyWithImpl<$Res>
+    extends _$AppErrorsCopyWithImpl<$Res, _$CustomHttpErrorImpl>
+    implements _$$CustomHttpErrorImplCopyWith<$Res> {
+  __$$CustomHttpErrorImplCopyWithImpl(
+      _$CustomHttpErrorImpl _value, $Res Function(_$CustomHttpErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? responseCode = null,
+    Object? message = freezed,
+  }) {
+    return _then(_$CustomHttpErrorImpl(
+      null == responseCode
+          ? _value.responseCode
+          : responseCode // ignore: cast_nullable_to_non_nullable
+              as int,
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CustomHttpErrorImpl implements CustomHttpError {
+  const _$CustomHttpErrorImpl(this.responseCode, {this.message});
+
+  @override
+  final int responseCode;
+  @override
+  final String? message;
+
+  @override
+  String toString() {
+    return 'AppErrors.customHttpError(responseCode: $responseCode, message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CustomHttpErrorImpl &&
+            (identical(other.responseCode, responseCode) ||
+                other.responseCode == responseCode) &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, responseCode, message);
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CustomHttpErrorImplCopyWith<_$CustomHttpErrorImpl> get copyWith =>
+      __$$CustomHttpErrorImplCopyWithImpl<_$CustomHttpErrorImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() connectionError,
+    required TResult Function(String? message) internalServerError,
+    required TResult Function(
+            int errorCode, String? message, ErrorCodeType type)
+        internalServerWithDataError,
+    required TResult Function() accountNotVerifiedError,
+    required TResult Function(String message) badRequestError,
+    required TResult Function(String? message) cancelError,
+    required TResult Function() conflictError,
+    required TResult Function(String message) customError,
+    required TResult Function() forbiddenError,
+    required TResult Function() formatError,
+    required TResult Function() loginRequiredError,
+    required TResult Function() netError,
+    required TResult Function(String requestedUrlPath) notFoundError,
+    required TResult Function() responseError,
+    required TResult Function() screenNotImplementedError,
+    required TResult Function() socketError,
+    required TResult Function() timeoutError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
+    required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
+  }) {
+    return customHttpError(responseCode, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? connectionError,
+    TResult? Function(String? message)? internalServerError,
+    TResult? Function(int errorCode, String? message, ErrorCodeType type)?
+        internalServerWithDataError,
+    TResult? Function()? accountNotVerifiedError,
+    TResult? Function(String message)? badRequestError,
+    TResult? Function(String? message)? cancelError,
+    TResult? Function()? conflictError,
+    TResult? Function(String message)? customError,
+    TResult? Function()? forbiddenError,
+    TResult? Function()? formatError,
+    TResult? Function()? loginRequiredError,
+    TResult? Function()? netError,
+    TResult? Function(String requestedUrlPath)? notFoundError,
+    TResult? Function()? responseError,
+    TResult? Function()? screenNotImplementedError,
+    TResult? Function()? socketError,
+    TResult? Function()? timeoutError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
+    TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
+  }) {
+    return customHttpError?.call(responseCode, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? connectionError,
+    TResult Function(String? message)? internalServerError,
+    TResult Function(int errorCode, String? message, ErrorCodeType type)?
+        internalServerWithDataError,
+    TResult Function()? accountNotVerifiedError,
+    TResult Function(String message)? badRequestError,
+    TResult Function(String? message)? cancelError,
+    TResult Function()? conflictError,
+    TResult Function(String message)? customError,
+    TResult Function()? forbiddenError,
+    TResult Function()? formatError,
+    TResult Function()? loginRequiredError,
+    TResult Function()? netError,
+    TResult Function(String requestedUrlPath)? notFoundError,
+    TResult Function()? responseError,
+    TResult Function()? screenNotImplementedError,
+    TResult Function()? socketError,
+    TResult Function()? timeoutError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
+    TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
+    required TResult orElse(),
+  }) {
+    if (customHttpError != null) {
+      return customHttpError(responseCode, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ConnectionError value) connectionError,
+    required TResult Function(InternalServerError value) internalServerError,
+    required TResult Function(InternalServerWithDataError value)
+        internalServerWithDataError,
+    required TResult Function(AccountNotVerifiedError value)
+        accountNotVerifiedError,
+    required TResult Function(BadRequestError value) badRequestError,
+    required TResult Function(CancelError value) cancelError,
+    required TResult Function(ConflictError value) conflictError,
+    required TResult Function(CustomError value) customError,
+    required TResult Function(ForbiddenError value) forbiddenError,
+    required TResult Function(FormatError value) formatError,
+    required TResult Function(LoginRequiredError value) loginRequiredError,
+    required TResult Function(NetError value) netError,
+    required TResult Function(NotFoundError value) notFoundError,
+    required TResult Function(ResponseError value) responseError,
+    required TResult Function(ScreenNotImplementedError value)
+        screenNotImplementedError,
+    required TResult Function(SocketError value) socketError,
+    required TResult Function(TimeoutError value) timeoutError,
+    required TResult Function(UnauthorizedError value) unauthorizedError,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
+  }) {
+    return customHttpError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ConnectionError value)? connectionError,
+    TResult? Function(InternalServerError value)? internalServerError,
+    TResult? Function(InternalServerWithDataError value)?
+        internalServerWithDataError,
+    TResult? Function(AccountNotVerifiedError value)? accountNotVerifiedError,
+    TResult? Function(BadRequestError value)? badRequestError,
+    TResult? Function(CancelError value)? cancelError,
+    TResult? Function(ConflictError value)? conflictError,
+    TResult? Function(CustomError value)? customError,
+    TResult? Function(ForbiddenError value)? forbiddenError,
+    TResult? Function(FormatError value)? formatError,
+    TResult? Function(LoginRequiredError value)? loginRequiredError,
+    TResult? Function(NetError value)? netError,
+    TResult? Function(NotFoundError value)? notFoundError,
+    TResult? Function(ResponseError value)? responseError,
+    TResult? Function(ScreenNotImplementedError value)?
+        screenNotImplementedError,
+    TResult? Function(SocketError value)? socketError,
+    TResult? Function(TimeoutError value)? timeoutError,
+    TResult? Function(UnauthorizedError value)? unauthorizedError,
+    TResult? Function(UnknownError value)? unknownError,
+    TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
+  }) {
+    return customHttpError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ConnectionError value)? connectionError,
+    TResult Function(InternalServerError value)? internalServerError,
+    TResult Function(InternalServerWithDataError value)?
+        internalServerWithDataError,
+    TResult Function(AccountNotVerifiedError value)? accountNotVerifiedError,
+    TResult Function(BadRequestError value)? badRequestError,
+    TResult Function(CancelError value)? cancelError,
+    TResult Function(ConflictError value)? conflictError,
+    TResult Function(CustomError value)? customError,
+    TResult Function(ForbiddenError value)? forbiddenError,
+    TResult Function(FormatError value)? formatError,
+    TResult Function(LoginRequiredError value)? loginRequiredError,
+    TResult Function(NetError value)? netError,
+    TResult Function(NotFoundError value)? notFoundError,
+    TResult Function(ResponseError value)? responseError,
+    TResult Function(ScreenNotImplementedError value)?
+        screenNotImplementedError,
+    TResult Function(SocketError value)? socketError,
+    TResult Function(TimeoutError value)? timeoutError,
+    TResult Function(UnauthorizedError value)? unauthorizedError,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
+    required TResult orElse(),
+  }) {
+    if (customHttpError != null) {
+      return customHttpError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CustomHttpError implements AppErrors, HttpError {
+  const factory CustomHttpError(final int responseCode,
+      {final String? message}) = _$CustomHttpErrorImpl;
+
+  int get responseCode;
+  String? get message;
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$CustomHttpErrorImplCopyWith<_$CustomHttpErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SerializationErrorImplCopyWith<$Res> {
+  factory _$$SerializationErrorImplCopyWith(_$SerializationErrorImpl value,
+          $Res Function(_$SerializationErrorImpl) then) =
+      __$$SerializationErrorImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String modelName, String message});
+}
+
+/// @nodoc
+class __$$SerializationErrorImplCopyWithImpl<$Res>
+    extends _$AppErrorsCopyWithImpl<$Res, _$SerializationErrorImpl>
+    implements _$$SerializationErrorImplCopyWith<$Res> {
+  __$$SerializationErrorImplCopyWithImpl(_$SerializationErrorImpl _value,
+      $Res Function(_$SerializationErrorImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? modelName = null,
+    Object? message = null,
+  }) {
+    return _then(_$SerializationErrorImpl(
+      modelName: null == modelName
+          ? _value.modelName
+          : modelName // ignore: cast_nullable_to_non_nullable
+              as String,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$SerializationErrorImpl implements SerializationError {
+  const _$SerializationErrorImpl({required this.modelName, this.message = ""});
+
+  @override
+  final String modelName;
+  @override
+  @JsonKey()
+  final String message;
+
+  @override
+  String toString() {
+    return 'AppErrors.serializationError(modelName: $modelName, message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SerializationErrorImpl &&
+            (identical(other.modelName, modelName) ||
+                other.modelName == modelName) &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, modelName, message);
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SerializationErrorImplCopyWith<_$SerializationErrorImpl> get copyWith =>
+      __$$SerializationErrorImplCopyWithImpl<_$SerializationErrorImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() connectionError,
+    required TResult Function(String? message) internalServerError,
+    required TResult Function(
+            int errorCode, String? message, ErrorCodeType type)
+        internalServerWithDataError,
+    required TResult Function() accountNotVerifiedError,
+    required TResult Function(String message) badRequestError,
+    required TResult Function(String? message) cancelError,
+    required TResult Function() conflictError,
+    required TResult Function(String message) customError,
+    required TResult Function() forbiddenError,
+    required TResult Function() formatError,
+    required TResult Function() loginRequiredError,
+    required TResult Function() netError,
+    required TResult Function(String requestedUrlPath) notFoundError,
+    required TResult Function() responseError,
+    required TResult Function() screenNotImplementedError,
+    required TResult Function() socketError,
+    required TResult Function() timeoutError,
+    required TResult Function(String? message) unauthorizedError,
+    required TResult Function(String? message) unknownError,
+    required TResult Function() guestError,
+    required TResult Function(
+            String message, List<Map<String, dynamic>> branches)
+        branchNotSelectedError,
+    required TResult Function(Map<String, List<String>> errors, String message)
+        unprocessableEntityError,
+    required TResult Function(String message) outdatedVersionError,
+    required TResult Function(String message) suspendedAccountError,
+    required TResult Function(String message) deactivatedAccountError,
+    required TResult Function(int responseCode, String? message)
+        customHttpError,
+    required TResult Function(String modelName, String message)
+        serializationError,
+  }) {
+    return serializationError(modelName, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? connectionError,
+    TResult? Function(String? message)? internalServerError,
+    TResult? Function(int errorCode, String? message, ErrorCodeType type)?
+        internalServerWithDataError,
+    TResult? Function()? accountNotVerifiedError,
+    TResult? Function(String message)? badRequestError,
+    TResult? Function(String? message)? cancelError,
+    TResult? Function()? conflictError,
+    TResult? Function(String message)? customError,
+    TResult? Function()? forbiddenError,
+    TResult? Function()? formatError,
+    TResult? Function()? loginRequiredError,
+    TResult? Function()? netError,
+    TResult? Function(String requestedUrlPath)? notFoundError,
+    TResult? Function()? responseError,
+    TResult? Function()? screenNotImplementedError,
+    TResult? Function()? socketError,
+    TResult? Function()? timeoutError,
+    TResult? Function(String? message)? unauthorizedError,
+    TResult? Function(String? message)? unknownError,
+    TResult? Function()? guestError,
+    TResult? Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult? Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult? Function(String message)? outdatedVersionError,
+    TResult? Function(String message)? suspendedAccountError,
+    TResult? Function(String message)? deactivatedAccountError,
+    TResult? Function(int responseCode, String? message)? customHttpError,
+    TResult? Function(String modelName, String message)? serializationError,
+  }) {
+    return serializationError?.call(modelName, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? connectionError,
+    TResult Function(String? message)? internalServerError,
+    TResult Function(int errorCode, String? message, ErrorCodeType type)?
+        internalServerWithDataError,
+    TResult Function()? accountNotVerifiedError,
+    TResult Function(String message)? badRequestError,
+    TResult Function(String? message)? cancelError,
+    TResult Function()? conflictError,
+    TResult Function(String message)? customError,
+    TResult Function()? forbiddenError,
+    TResult Function()? formatError,
+    TResult Function()? loginRequiredError,
+    TResult Function()? netError,
+    TResult Function(String requestedUrlPath)? notFoundError,
+    TResult Function()? responseError,
+    TResult Function()? screenNotImplementedError,
+    TResult Function()? socketError,
+    TResult Function()? timeoutError,
+    TResult Function(String? message)? unauthorizedError,
+    TResult Function(String? message)? unknownError,
+    TResult Function()? guestError,
+    TResult Function(String message, List<Map<String, dynamic>> branches)?
+        branchNotSelectedError,
+    TResult Function(Map<String, List<String>> errors, String message)?
+        unprocessableEntityError,
+    TResult Function(String message)? outdatedVersionError,
+    TResult Function(String message)? suspendedAccountError,
+    TResult Function(String message)? deactivatedAccountError,
+    TResult Function(int responseCode, String? message)? customHttpError,
+    TResult Function(String modelName, String message)? serializationError,
+    required TResult orElse(),
+  }) {
+    if (serializationError != null) {
+      return serializationError(modelName, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ConnectionError value) connectionError,
+    required TResult Function(InternalServerError value) internalServerError,
+    required TResult Function(InternalServerWithDataError value)
+        internalServerWithDataError,
+    required TResult Function(AccountNotVerifiedError value)
+        accountNotVerifiedError,
+    required TResult Function(BadRequestError value) badRequestError,
+    required TResult Function(CancelError value) cancelError,
+    required TResult Function(ConflictError value) conflictError,
+    required TResult Function(CustomError value) customError,
+    required TResult Function(ForbiddenError value) forbiddenError,
+    required TResult Function(FormatError value) formatError,
+    required TResult Function(LoginRequiredError value) loginRequiredError,
+    required TResult Function(NetError value) netError,
+    required TResult Function(NotFoundError value) notFoundError,
+    required TResult Function(ResponseError value) responseError,
+    required TResult Function(ScreenNotImplementedError value)
+        screenNotImplementedError,
+    required TResult Function(SocketError value) socketError,
+    required TResult Function(TimeoutError value) timeoutError,
+    required TResult Function(UnauthorizedError value) unauthorizedError,
+    required TResult Function(UnknownError value) unknownError,
+    required TResult Function(GuestError value) guestError,
+    required TResult Function(BranchNotSelectedError value)
+        branchNotSelectedError,
+    required TResult Function(UnprocessableEntityError value)
+        unprocessableEntityError,
+    required TResult Function(OutdatedVersionError value) outdatedVersionError,
+    required TResult Function(SuspendedAccountError value)
+        suspendedAccountError,
+    required TResult Function(DeactivatedAccountError value)
+        deactivatedAccountError,
+    required TResult Function(CustomHttpError value) customHttpError,
+    required TResult Function(SerializationError value) serializationError,
+  }) {
+    return serializationError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ConnectionError value)? connectionError,
+    TResult? Function(InternalServerError value)? internalServerError,
+    TResult? Function(InternalServerWithDataError value)?
+        internalServerWithDataError,
+    TResult? Function(AccountNotVerifiedError value)? accountNotVerifiedError,
+    TResult? Function(BadRequestError value)? badRequestError,
+    TResult? Function(CancelError value)? cancelError,
+    TResult? Function(ConflictError value)? conflictError,
+    TResult? Function(CustomError value)? customError,
+    TResult? Function(ForbiddenError value)? forbiddenError,
+    TResult? Function(FormatError value)? formatError,
+    TResult? Function(LoginRequiredError value)? loginRequiredError,
+    TResult? Function(NetError value)? netError,
+    TResult? Function(NotFoundError value)? notFoundError,
+    TResult? Function(ResponseError value)? responseError,
+    TResult? Function(ScreenNotImplementedError value)?
+        screenNotImplementedError,
+    TResult? Function(SocketError value)? socketError,
+    TResult? Function(TimeoutError value)? timeoutError,
+    TResult? Function(UnauthorizedError value)? unauthorizedError,
+    TResult? Function(UnknownError value)? unknownError,
+    TResult? Function(GuestError value)? guestError,
+    TResult? Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult? Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult? Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult? Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult? Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult? Function(CustomHttpError value)? customHttpError,
+    TResult? Function(SerializationError value)? serializationError,
+  }) {
+    return serializationError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ConnectionError value)? connectionError,
+    TResult Function(InternalServerError value)? internalServerError,
+    TResult Function(InternalServerWithDataError value)?
+        internalServerWithDataError,
+    TResult Function(AccountNotVerifiedError value)? accountNotVerifiedError,
+    TResult Function(BadRequestError value)? badRequestError,
+    TResult Function(CancelError value)? cancelError,
+    TResult Function(ConflictError value)? conflictError,
+    TResult Function(CustomError value)? customError,
+    TResult Function(ForbiddenError value)? forbiddenError,
+    TResult Function(FormatError value)? formatError,
+    TResult Function(LoginRequiredError value)? loginRequiredError,
+    TResult Function(NetError value)? netError,
+    TResult Function(NotFoundError value)? notFoundError,
+    TResult Function(ResponseError value)? responseError,
+    TResult Function(ScreenNotImplementedError value)?
+        screenNotImplementedError,
+    TResult Function(SocketError value)? socketError,
+    TResult Function(TimeoutError value)? timeoutError,
+    TResult Function(UnauthorizedError value)? unauthorizedError,
+    TResult Function(UnknownError value)? unknownError,
+    TResult Function(GuestError value)? guestError,
+    TResult Function(BranchNotSelectedError value)? branchNotSelectedError,
+    TResult Function(UnprocessableEntityError value)? unprocessableEntityError,
+    TResult Function(OutdatedVersionError value)? outdatedVersionError,
+    TResult Function(SuspendedAccountError value)? suspendedAccountError,
+    TResult Function(DeactivatedAccountError value)? deactivatedAccountError,
+    TResult Function(CustomHttpError value)? customHttpError,
+    TResult Function(SerializationError value)? serializationError,
+    required TResult orElse(),
+  }) {
+    if (serializationError != null) {
+      return serializationError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SerializationError implements AppErrors {
+  const factory SerializationError(
+      {required final String modelName,
+      final String message}) = _$SerializationErrorImpl;
+
+  String get modelName;
+  String get message;
+
+  /// Create a copy of AppErrors
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SerializationErrorImplCopyWith<_$SerializationErrorImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

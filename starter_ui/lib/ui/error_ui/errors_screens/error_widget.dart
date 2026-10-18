@@ -5,6 +5,7 @@ import 'package:starter_localization/l10n.dart';
 import 'package:starter_core/common/extensions/extensions.dart';
 import 'package:starter_ui/constants/app_constants.dart';
 import 'package:starter_core/errors/app_errors.dart';
+import 'package:starter_core/errors/app_errors_extension.dart';
 import 'build_error_screen.dart';
 
 part 'account_not_verified_error_screen/account_not_verified_error_screen.dart';
@@ -388,6 +389,90 @@ class ErrorScreenWidget extends StatelessWidget {
             disableRetryButton: this.disableRetryButton,
           );
         }
+      },
+      branchNotSelectedError: (error) {
+        final screen = CustomErrorScreenWidget(
+          message: error.message,
+          callback: callback,
+          disableRetryButton: this.disableRetryButton,
+        );
+        if (errorWidget != null) {
+          errorWidget.children.add(screen);
+          return errorWidget;
+        }
+        return screen;
+      },
+      unprocessableEntityError: (error) {
+        final screen = CustomErrorScreenWidget(
+          message: error.message,
+          callback: callback,
+          disableRetryButton: this.disableRetryButton,
+        );
+        if (errorWidget != null) {
+          errorWidget.children.add(screen);
+          return errorWidget;
+        }
+        return screen;
+      },
+      outdatedVersionError: (error) {
+        final screen = CustomErrorScreenWidget(
+          message: error.message,
+          callback: callback,
+          disableRetryButton: this.disableRetryButton,
+        );
+        if (errorWidget != null) {
+          errorWidget.children.add(screen);
+          return errorWidget;
+        }
+        return screen;
+      },
+      suspendedAccountError: (error) {
+        final screen = CustomErrorScreenWidget(
+          message: error.message,
+          callback: callback,
+          disableRetryButton: this.disableRetryButton,
+        );
+        if (errorWidget != null) {
+          errorWidget.children.add(screen);
+          return errorWidget;
+        }
+        return screen;
+      },
+      deactivatedAccountError: (error) {
+        final screen = CustomErrorScreenWidget(
+          message: error.message,
+          callback: callback,
+          disableRetryButton: this.disableRetryButton,
+        );
+        if (errorWidget != null) {
+          errorWidget.children.add(screen);
+          return errorWidget;
+        }
+        return screen;
+      },
+      customHttpError: (error) {
+        final screen = CustomErrorScreenWidget(
+          message: AppErrorsMessage(error).message,
+          callback: callback,
+          disableRetryButton: this.disableRetryButton,
+        );
+        if (errorWidget != null) {
+          errorWidget.children.add(screen);
+          return errorWidget;
+        }
+        return screen;
+      },
+      serializationError: (error) {
+        final screen = CustomErrorScreenWidget(
+          message: error.message,
+          callback: callback,
+          disableRetryButton: this.disableRetryButton,
+        );
+        if (errorWidget != null) {
+          errorWidget.children.add(screen);
+          return errorWidget;
+        }
+        return screen;
       },
     );
 

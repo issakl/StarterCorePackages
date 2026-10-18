@@ -11,7 +11,8 @@ class AppErrors with _$AppErrors {
   const factory AppErrors.connectionError() = ConnectionError;
 
   @Implements<HttpError>()
-  const factory AppErrors.internalServerError() = InternalServerError;
+  const factory AppErrors.internalServerError({String? message}) =
+      InternalServerError;
 
   @Implements<HttpError>()
   const factory AppErrors.internalServerWithDataError(
@@ -75,12 +76,54 @@ class AppErrors with _$AppErrors {
 
   /// UnauthorizedError extends HttpError
   @Implements<HttpError>()
-  const factory AppErrors.unauthorizedError() = UnauthorizedError;
+  const factory AppErrors.unauthorizedError({String? message}) =
+      UnauthorizedError;
 
   /// UnknownError extends ConnectionError
   @Implements<HttpError>()
-  const factory AppErrors.unknownError() = UnknownError;
+  const factory AppErrors.unknownError({String? message}) = UnknownError;
 
   /// GuestError
   const factory AppErrors.guestError() = GuestError;
+
+  /// Server asked the user to pick a branch (HTTP 405).
+  /// [branches] holds the raw JSON of the selectable branches.
+  @Implements<HttpError>()
+  const factory AppErrors.branchNotSelectedError({
+    @Default("") String message,
+    @Default([]) List<Map<String, dynamic>> branches,
+  }) = BranchNotSelectedError;
+
+  /// Validation failure (HTTP 422); [errors] maps field name to messages.
+  @Implements<HttpError>()
+  const factory AppErrors.unprocessableEntityError({
+    @Default({}) Map<String, List<String>> errors,
+    @Default("") String message,
+  }) = UnprocessableEntityError;
+
+  /// App version is no longer supported by the server (HTTP 423).
+  @Implements<HttpError>()
+  const factory AppErrors.outdatedVersionError({@Default("") String message}) =
+      OutdatedVersionError;
+
+  /// Account suspended (HTTP 430).
+  @Implements<HttpError>()
+  const factory AppErrors.suspendedAccountError(
+      {@Default("") String message}) = SuspendedAccountError;
+
+  /// Account deactivated (HTTP 431).
+  @Implements<HttpError>()
+  const factory AppErrors.deactivatedAccountError(
+      {@Default("") String message}) = DeactivatedAccountError;
+
+  /// Any other app-specific status code carrying its own message.
+  @Implements<HttpError>()
+  const factory AppErrors.customHttpError(int responseCode, {String? message}) =
+      CustomHttpError;
+
+  /// A response could not be (de)serialized into [modelName].
+  const factory AppErrors.serializationError({
+    required String modelName,
+    @Default("") String message,
+  }) = SerializationError;
 }
