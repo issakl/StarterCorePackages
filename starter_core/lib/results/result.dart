@@ -87,6 +87,13 @@ class Result<Error extends AppErrors, Data> {
     }
   }
 
+  /// Returns a value computed from either the data or the error.
+  R when<R>({
+    required R Function(Data data) onData,
+    required R Function(Error error) onError,
+  }) =>
+      hasErrorOnly ? onError(error!) : onData(data as Data);
+
   /// Same as [pick] but awaits the callbacks, for async handlers.
   Future<void> pickAsync({
     required FutureOr<void> Function(Data data) onData,
