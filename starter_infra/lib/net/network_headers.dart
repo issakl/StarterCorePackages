@@ -7,4 +7,8 @@ class NetHeaders {
   static const String appVersion = 'appversion';
   static const String auth = 'authorization';
   static const String language = 'Accept-Language';
+
+  /// `RequestOptions.extra` key marking a request that needs the secure
+  /// (authenticated) headers from [AuthInterceptor.secureHeaders].
+  static const String secureRequestExtra = 'secureRequest';
 }
