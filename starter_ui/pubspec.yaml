@@ -5,7 +5,7 @@ description: >-
   plus UI constants and colors. App-specific runtime state (context, language,
   routing) is injected through UiRuntime rather than imported.
 publish_to: "none"
-version: 0.2.0
+version: 0.3.0
 
 environment:
   sdk: ">=3.6.0 <4.0.0"
@@ -41,6 +41,9 @@ dependencies:
   flutter_svg: ^2.0.2
   cached_network_image: ^3.4.1
   clippy_flutter: ^2.0.0-nullsafety.1
+
+  # Navigation (Nav is built on GoRouter)
+  go_router: ^16.2.0
 
   # State management used by UI cubits
   flutter_bloc: ^8.1.2

@@ -1,45 +1,80 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:starter_core/common/extensions/extensions.dart';
 import 'package:starter_ui/navigation/base_screen_param.dart';
-import 'package:starter_ui/navigation/nav_driver.dart';
+import 'package:starter_ui/ui_runtime.dart';
 
 /// Class to make navigation calling shorter and faster to use.
 ///
-/// Calls are delegated to [driver], which defaults to the Flutter `Navigator`
-/// named-route implementation. Apps using another router install their own
-/// [NavDriver] once at startup (`Nav.driver = MyDriver()`).
+/// Built on GoRouter: the app owns a `GoRouter` (`MaterialApp.router`) and
+/// supplies a context through [UiRuntime.appContextProvider] so `Nav` can be
+/// used without one.
 class Nav {
   Nav._();
 
-  static NavDriver driver = const NavigatorNavDriver();
-
-  /// Push a named route. [arguments] is delivered to the destination (for the
-  /// default driver as `RouteSettings.arguments`).
+  /// Navigate to [routeName], which is either a GoRouter route *name* or a
+  /// location/path (starting with `/`, optionally with a query string).
   ///
-  /// When [canGoBack] is false the whole stack is cleared, so the pushed
-  /// route becomes the new root (e.g. splash -> home, logout -> login).
-  static Future<T?> to<T extends Object?>(
+  /// [arguments] provides path parameters (named routes only), query
+  /// parameters and the `extra` object. When [canGoBack] is false the
+  /// navigation is not recorded in the browser history (`Router.neglect`).
+  static void to<T extends Object?>(
     String routeName, {
     required BaseScreenParam? arguments,
     BuildContext? context,
     bool canGoBack = true,
-  }) =>
-      driver.to<T>(routeName,
-          arguments: arguments, context: context, canGoBack: canGoBack);
-
-  /// Replace the current route with a named route.
-  static Future<T?> replace<T extends Object?, TO extends Object?>(
-    String routeName, {
-    required BaseScreenParam? arguments,
-    BuildContext? context,
-    TO? result,
-  }) =>
-      driver.replace<T, TO>(routeName,
-          arguments: arguments, context: context, result: result);
+  }) {
+    final appConfigOrParamContext = (context ?? UiRuntime.appContext!);
+    final location = _location(appConfigOrParamContext, routeName, arguments);
+    final go = () => appConfigOrParamContext.go(
+          location,
+          extra: arguments?.extra,
+        );
+    if (canGoBack) {
+      go();
+    } else {
+      Router.neglect(appConfigOrParamContext, go);
+    }
+  }
 
   /// Pop
-  static void pop<T extends Object?>([BuildContext? context, T? result]) =>
-      driver.pop<T>(context, result);
+  static void pop<T extends Object?>([BuildContext? context, T? result]) {
+    if ((context ?? UiRuntime.appContext!).canPop())
+      (context ?? UiRuntime.appContext!).pop(result);
+    else
+      throw Exception("Can't go back to the previous screen");
+  }
 
-  /// Re-evaluate the current route (router redirects/guards).
-  static void refresh() => driver.refresh();
+  /// Re-evaluates the current location, re-running the router's redirects
+  /// (route guards).
+  static void refresh([BuildContext? context]) =>
+      GoRouter.of(context ?? UiRuntime.appContext!).refresh();
+
+  static String _location(
+    BuildContext context,
+    String routeName,
+    BaseScreenParam? arguments,
+  ) {
+    final query = arguments?.queryParams ?? const <String, dynamic>{};
+    if (routeName.startsWith('/')) {
+      final uri = Uri.parse(routeName);
+      final merged = <String, dynamic>{
+        ...uri.queryParameters,
+        ...query.map((k, v) => MapEntry(k, v.toString())),
+      };
+      return uri
+          .replace(queryParameters: merged.isEmpty ? null : merged)
+          .toString();
+    }
+    try {
+      return context.namedLocation(
+        routeName,
+        queryParameters: query,
+        pathParameters: arguments?.pathParams ?? {},
+      );
+    } catch (ex) {
+      ex.toString().logE;
+      return '-';
+    }
+  }
 }
