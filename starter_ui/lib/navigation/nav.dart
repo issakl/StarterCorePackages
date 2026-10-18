@@ -1,12 +1,19 @@
-import 'package:starter_ui/ui_runtime.dart';
 import 'package:flutter/material.dart';
 import 'package:starter_ui/navigation/base_screen_param.dart';
+import 'package:starter_ui/navigation/nav_driver.dart';
 
-/// Class to make navigation calling shorter and faster to use
+/// Class to make navigation calling shorter and faster to use.
+///
+/// Calls are delegated to [driver], which defaults to the Flutter `Navigator`
+/// named-route implementation. Apps using another router install their own
+/// [NavDriver] once at startup (`Nav.driver = MyDriver()`).
 class Nav {
-  /// Push a named route. [arguments] is delivered as the route's
-  /// `RouteSettings.arguments` (read it with
-  /// `ModalRoute.of(context)!.settings.arguments`).
+  Nav._();
+
+  static NavDriver driver = const NavigatorNavDriver();
+
+  /// Push a named route. [arguments] is delivered to the destination (for the
+  /// default driver as `RouteSettings.arguments`).
   ///
   /// When [canGoBack] is false the whole stack is cleared, so the pushed
   /// route becomes the new root (e.g. splash -> home, logout -> login).
@@ -15,17 +22,9 @@ class Nav {
     required BaseScreenParam? arguments,
     BuildContext? context,
     bool canGoBack = true,
-  }) {
-    final navigator = Navigator.of(context ?? UiRuntime.appContext!);
-    if (canGoBack) {
-      return navigator.pushNamed<T>(routeName, arguments: arguments);
-    }
-    return navigator.pushNamedAndRemoveUntil<T>(
-      routeName,
-      (_) => false,
-      arguments: arguments,
-    );
-  }
+  }) =>
+      driver.to<T>(routeName,
+          arguments: arguments, context: context, canGoBack: canGoBack);
 
   /// Replace the current route with a named route.
   static Future<T?> replace<T extends Object?, TO extends Object?>(
@@ -33,21 +32,14 @@ class Nav {
     required BaseScreenParam? arguments,
     BuildContext? context,
     TO? result,
-  }) {
-    return Navigator.of(context ?? UiRuntime.appContext!)
-        .pushReplacementNamed<T, TO>(
-      routeName,
-      arguments: arguments,
-      result: result,
-    );
-  }
+  }) =>
+      driver.replace<T, TO>(routeName,
+          arguments: arguments, context: context, result: result);
 
   /// Pop
-  static void pop<T extends Object?>([BuildContext? context, T? result]) {
-    final navigator = Navigator.of(context ?? UiRuntime.appContext!);
-    if (navigator.canPop())
-      navigator.pop<T>(result);
-    else
-      throw Exception("Can't go back to the previous screen");
-  }
+  static void pop<T extends Object?>([BuildContext? context, T? result]) =>
+      driver.pop<T>(context, result);
+
+  /// Re-evaluate the current route (router redirects/guards).
+  static void refresh() => driver.refresh();
 }
